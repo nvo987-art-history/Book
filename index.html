@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050507" />
+  <meta
+    name="description"
+    content="NVO987 — Publishing Cultural & Artistic Research. Curated by Nicholas Van-Orton."
+  />
+  <title>NVO987 — Cultural & Artistic Research</title>
+
+  <style>
+    /* =========================================================
+       NVO987 — Luxury Publishing Portal
+       Self-contained production-ready HTML / CSS / JS
+       ========================================================= */
+
+    :root {
+      --obsidian: #050507;
+      --obsidian-2: #09090c;
+      --surface: rgba(18, 18, 23, 0.68);
+      --surface-strong: rgba(22, 22, 28, 0.88);
+      --surface-soft: rgba(255, 255, 255, 0.035);
+      --line: rgba(255, 255, 255, 0.09);
+      --line-gold: rgba(212, 175, 55, 0.34);
+
+      --white: #f3f4f6;
+      --text: #d1d5db;
+      --muted: #9ca3af;
+      --muted-2: #6b7280;
+
+      --gold: #d4af37;
+      --gold-light: #f0d978;
+      --gold-dark: #8f741c;
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --radius-xl: 38px;
+
+      --container: 1240px;
+      --nav-height: 78px;
+
+      --shadow-lg:
+        0 30px 90px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* -------------------------
+       RESET
+       ------------------------- */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--obsidian);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(212, 175, 55, 0.055),
+          transparent 34rem
+        ),
+        var(--obsidian);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      background: rgba(212, 175, 55, 0.28);
+      color: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--white);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    /* -------------------------
+       UTILITIES
+       ------------------------- */
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin-inline: auto;
+    }
+
+    .gold {
+      color: var(--gold-light);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 52px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 18px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      font-weight: 600;
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    /* -------------------------
+       BACKGROUND ATMOSPHERE
+       ------------------------- */
+
+    .ambient {
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient::before,
+    .ambient::after {
+      content: "";
+      position: absolute;
+      width: 50vw;
+      height: 50vw;
+      max-width: 720px;
+      max-height: 720px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.12;
+    }
+
+    .ambient::before {
+      top: -25%;
+      left: -15%;
+      background: rgba(212, 175, 55, 0.18);
+      animation: ambientFloat 18s ease-in-out infinite alternate;
+    }
+
+    .ambient::after {
+      right: -20%;
+      bottom: -25%;
+      background: rgba(74, 56, 120, 0.2);
+      animation: ambientFloat 22s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes ambientFloat {
+      from {
+        transform: translate3d(-2%, -1%, 0) scale(0.95);
+      }
+      to {
+        transform: translate3d(4%, 5%, 0) scale(1.08);
+      }
+    }
+
+    /* -------------------------
+       NAVBAR
+       ------------------------- */
+
+    .site-header {
+      position: sticky;
+      z-index: 1000;
+      top: 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+      background: rgba(5, 5, 7, 0.72);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(5, 5, 7, 0.92);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .nav {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow:
+        0 0 8px rgba(212, 175, 55, 0.95),
+        0 0 22px rgba(212, 175, 55, 0.5);
+      animation: dotPulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.35);
+        opacity: 1;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+      color: #b7bbc4;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1px;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid var(--line-gold);
+      border-radius: 999px;
+      color: var(--gold-light) !important;
+      background: rgba(212, 175, 55, 0.055);
+    }
+
+    .nav-cta::after {
+      display: none;
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+    }
+
+    .mobile-toggle span,
+    .mobile-toggle span::before,
+    .mobile-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      margin: auto;
+      background: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-toggle span {
+      position: relative;
+    }
+
+    .mobile-toggle span::before,
+    .mobile-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .mobile-toggle span::before {
+      top: -6px;
+    }
+
+    .mobile-toggle span::after {
+      top: 6px;
+    }
+
+    .mobile-toggle.active span {
+      background: transparent;
+    }
+
+    .mobile-toggle.active span::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .mobile-toggle.active span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    /* -------------------------
+       HERO
+       ------------------------- */
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      padding: 110px 0 100px;
+      overflow: hidden;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          ellipse at 18% 35%,
+          rgba(212, 175, 55, 0.18) 0%,
+          transparent 33%
+        ),
+        radial-gradient(
+          ellipse at 80% 22%,
+          rgba(93, 71, 152, 0.16) 0%,
+          transparent 32%
+        ),
+        radial-gradient(
+          ellipse at 70% 85%,
+          rgba(212, 175, 55, 0.08) 0%,
+          transparent 35%
+        ),
+        linear-gradient(125deg, #050507 10%, #0b0a0e 50%, #060608 100%);
+    }
+
+    .hero-mesh::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        conic-gradient(
+          from 120deg at 45% 50%,
+          transparent 0deg,
+          rgba(212, 175, 55, 0.08) 55deg,
+          transparent 105deg,
+          rgba(121, 88, 185, 0.08) 180deg,
+          transparent 240deg
+        );
+      filter: blur(60px);
+      animation: meshRotate 24s linear infinite;
+    }
+
+    .hero-mesh::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.25;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at center, black, transparent 75%);
+    }
+
+    @keyframes meshRotate {
+      from {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.08);
+      }
+
+      to {
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 180px;
+      background: linear-gradient(transparent, var(--obsidian));
+    }
+
+    .hero-content {
+      max-width: 1050px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeUp 0.9s var(--ease) both;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.45);
+    }
+
+    .hero h1 {
+      max-width: 1050px;
+      margin-bottom: 26px;
+      font-size: clamp(3.3rem, 8vw, 7.6rem);
+      font-weight: 650;
+      letter-spacing: -0.065em;
+      line-height: 0.94;
+      text-wrap: balance;
+      animation: fadeUp 0.95s 0.08s var(--ease) both;
+    }
+
+    .hero h1 .gold-word {
+      color: var(--gold-light);
+      text-shadow: 0 0 40px rgba(212, 175, 55, 0.12);
+    }
+
+    .hero-subtitle {
+      margin-bottom: 42px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      animation: fadeUp 0.95s 0.16s var(--ease) both;
+    }
+
+    .hero-subtitle strong {
+      color: #dfe1e5;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp 0.95s 0.24s var(--ease) both;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 24px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        transform 0.35s var(--ease),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #090806;
+      background: linear-gradient(
+        135deg,
+        #e7c85c,
+        #d4af37 50%,
+        #b99224
+      );
+      box-shadow:
+        0 10px 35px rgba(212, 175, 55, 0.18),
+        inset 0 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 16px 48px rgba(212, 175, 55, 0.3),
+        0 0 35px rgba(212, 175, 55, 0.13);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(212, 175, 55, 0.35);
+      background: rgba(212, 175, 55, 0.07);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* -------------------------
+       SHARED SECTIONS
+       ------------------------- */
+
+    .section {
+      position: relative;
+      padding: 125px 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(255, 255, 255, 0.035);
+    }
+
+    /* -------------------------
+       INTRODUCTION
+       ------------------------- */
+
+    .intro-wrap {
+      position: relative;
+    }
+
+    .intro-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      padding: clamp(34px, 6vw, 76px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.055),
+          rgba(255, 255, 255, 0.018)
+        ),
+        rgba(11, 11, 15, 0.68);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(26px) saturate(130%);
+      -webkit-backdrop-filter: blur(26px) saturate(130%);
+      overflow: hidden;
+    }
+
+    .intro-card::before {
+      content: "";
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      box-shadow:
+        0 0 0 40px rgba(212, 175, 55, 0.025),
+        0 0 0 80px rgba(212, 175, 55, 0.015);
+      pointer-events: none;
+    }
+
+    .intro-profile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+
+    .monogram {
+      width: 94px;
+      height: 94px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-gold);
+      border-radius: 26px;
+      color: var(--gold-light);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(212, 175, 55, 0.11),
+          rgba(255, 255, 255, 0.025)
+        );
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.08);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+      font-style: italic;
+    }
+
+    .profile-meta {
+      margin-top: 35px;
+    }
+
+    .profile-meta h3 {
+      margin-bottom: 7px;
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+
+    .profile-meta p {
+      margin-bottom: 0;
+      color: var(--gold-light);
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro-copy h2 {
+      margin-bottom: 24px;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 600;
+    }
+
+    .intro-copy > p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .intro-copy > p + p {
+      margin-top: 18px;
+    }
+
+    .mission-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+      color: #c8cbd1;
+      font-size: 0.96rem;
+    }
+
+    .mission-line span {
+      flex-shrink: 0;
+      width: 7px;
+      height: 7px;
+      margin-top: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.65);
+    }
+
+    /* -------------------------
+       LIBRARY
+       ------------------------- */
+
+    .library-section {
+      padding-top: 145px;
+    }
+
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .book-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.012)
+        ),
+        rgba(10, 10, 13, 0.7);
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.26),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition:
+        transform 0.5s var(--ease),
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(212, 175, 55, 0.26);
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(212, 175, 55, 0.045);
+    }
+
+    .book-cover {
+      position: relative;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: 18px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .book-cover::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(212, 175, 55, 0.25),
+          transparent 32%
+        ),
+        linear-gradient(
+          145deg,
+          #1a1711 0%,
+          #0c0b0d 42%,
+          #060607 100%
+        );
+    }
+
+    .book-cover::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 16px;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .cover-number {
+      color: rgba(240, 217, 120, 0.72);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .cover-art {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 170px;
+      height: 170px;
+      transform: translate(-50%, -50%) rotate(18deg);
+      border: 1px solid rgba(212, 175, 55, 0.26);
+      border-radius: 48% 52% 44% 56%;
+      box-shadow:
+        0 0 80px rgba(212, 175, 55, 0.08),
+        inset 0 0 50px rgba(212, 175, 55, 0.04);
+      opacity: 0.82;
+    }
+
+    .cover-art::before,
+    .cover-art::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+    }
+
+    .cover-art::after {
+      inset: 38%;
+      background: rgba(212, 175, 55, 0.18);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+    }
+
+    .cover-title {
+      margin-top: auto;
+      margin-bottom: 0;
+      max-width: 290px;
+      color: #f5f2e8;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .book-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 26px 14px 12px;
+    }
+
+    .isbn {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 5px 9px;
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      border-radius: 7px;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.045);
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+    }
+
+    .book-body h3 {
+      margin-bottom: 6px;
+      font-size: 1.65rem;
+      font-weight: 600;
+    }
+
+    .book-subtitle {
+      margin-bottom: 17px;
+      color: #c3c6cd;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .book-summary {
+      flex: 1;
+      margin-bottom: 25px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .order-btn {
+      width: 100%;
+      min-height: 52px;
+      color: #090806;
+      background: linear-gradient(
+        135deg,
+        #ead06c,
+        #d4af37
+      );
+      box-shadow:
+        0 10px 30px rgba(212, 175, 55, 0.1),
+        inset 0 1px rgba(255, 255, 255, 0.38);
+    }
+
+    .order-btn:hover {
+      box-shadow:
+        0 16px 40px rgba(212, 175, 55, 0.22),
+        0 0 30px rgba(212, 175, 55, 0.08);
+    }
+
+    /* Different placeholder cover treatments */
+    .book-card:nth-child(2) .book-cover::before {
+      background:
+        radial-gradient(
+          circle at 25% 70%,
+          rgba(105, 81, 160, 0.25),
+          transparent 35%
+        ),
+        linear-gradient(145deg, #111016, #08080a);
+    }
+
+    .book-card:nth-child(2) .cover-art {
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg) scale(1.08);
+    }
+
+    .book-card:nth-child(2) .cover-art::after {
+      border-radius: 8px;
+      transform: rotate(45deg);
+    }
+
+    .book-card:nth-child(3) .book-cover::before {
+      background:
+        radial-gradient(
+          ellipse at 70% 65%,
+          rgba(212, 175, 55, 0.2),
+          transparent 30%
+        ),
+        linear-gradient(160deg, #15120d, #070709);
+    }
+
+    .book-card:nth-child(3) .cover-art {
+      border-radius: 12%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .book-card:nth-child(3) .cover-art::before {
+      border-radius: 12%;
+    }
+
+    /* -------------------------
+       MANIFESTO STRIP
+       ------------------------- */
+
+    .manifesto {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+    }
+
+    .manifesto-track {
+      display: flex;
+      width: max-content;
+      gap: 38px;
+      animation: marquee 30s linear infinite;
+    }
+
+    .manifesto-item {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      color: rgba(243, 244, 246, 0.2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .manifesto-item::after {
+      content: "✦";
+      color: rgba(212, 175, 55, 0.6);
+      font-family: inherit;
+      font-size: 0.55em;
+      font-style: normal;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* -------------------------
+       FOOTER
+       ------------------------- */
+
+    .site-footer {
+      position: relative;
+      padding: 90px 0 28px;
+      background: #030304;
+      border-top: 1px solid rgba(255, 255, 255, 0.055);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
+      gap: 55px;
+      padding-bottom: 75px;
+    }
+
+    .footer-brand {
+      max-width: 330px;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      margin-bottom: 0;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .footer-title {
+      margin-bottom: 20px;
+      color: #e1e3e7;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      width: fit-content;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+      transform: translateX(3px);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #c9ccd2 !important;
+      word-break: break-word;
+    }
+
+    .contact-link::before {
+      content: "↗";
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.055);
+      color: #555963;
+      font-size: 0.76rem;
+    }
+
+    .footer-domain {
+      color: #777b84;
+      transition: color 0.25s ease;
+    }
+
+    .footer-domain:hover {
+      color: var(--gold-light);
+    }
+
+    /* -------------------------
+       SCROLL REVEAL
+       ------------------------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s var(--ease),
+        transform 0.8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -------------------------
+       RESPONSIVE
+       ------------------------- */
+
+    @media (max-width: 980px) {
+      .nav-links {
+        gap: 20px;
+      }
+
+      .intro-card {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .intro-profile {
+        min-height: auto;
+      }
+
+      .library-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --nav-height: 70px;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--container));
+      }
+
+      .site-header {
+        background: rgba(5, 5, 7, 0.9);
+      }
+
+      .nav {
+        min-height: var(--nav-height);
+      }
+
+      .mobile-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 14px;
+        right: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 3px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(10, 10, 13, 0.96);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s var(--ease);
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        padding: 13px 14px;
+        border-radius: 10px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .nav-cta {
+        margin-top: 4px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 100px 0 100px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 14vw, 5.5rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .library-section {
+        padding-top: 105px;
+      }
+
+      .section-heading {
+        margin-bottom: 36px;
+      }
+
+      .intro-card {
+        padding: 28px;
+        border-radius: 26px;
+      }
+
+      .library-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover {
+        min-height: 420px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-bottom: 50px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .brand {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding-top: 78px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.85rem, 15vw, 4.4rem);
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .intro-card {
+        padding: 23px;
+      }
+
+      .monogram {
+        width: 78px;
+        height: 78px;
+      }
+
+      .book-card {
+        padding: 10px;
+        border-radius: 22px;
+      }
+
+      .book-cover {
+        min-height: 390px;
+        padding: 24px;
+      }
+
+      .book-body {
+        padding-inline: 10px;
+      }
+    }
+
+    /* -------------------------
+       REDUCED MOTION
+       ------------------------- */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="NVO987 home">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>NVO987</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#library">Library</a>
+          <a href="#mission">Mission</a>
+          <a class="nav-cta" href="#contact">Contact</a>
+        </div>
+
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-mesh" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-kicker">
+            Independent Cultural Publishing
+          </div>
+
+          <h1 id="hero-title">
+            NVO987:
+            <span class="gold-word">Publishing</span>
+            Cultural &amp; Artistic Research
+          </h1>
+
+          <p class="hero-subtitle">
+            <strong>Curated by Nicholas Van-Orton</strong>
+            <br />
+            Books, ideas, archives, and visual research for readers who look
+            beyond the obvious.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#library">
+              Explore the Library
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="btn btn-secondary" href="#about">
+              Discover NVO987
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         INTRODUCTION
+         ===================================================== -->
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="intro-wrap">
+          <div class="intro-card reveal">
+            <div class="intro-profile">
+              <div class="monogram" aria-hidden="true">NVO</div>
+
+              <div class="profile-meta">
+                <h3>Nicholas Van-Orton</h3>
+                <p>Publisher &amp; Curator</p>
+              </div>
+            </div>
+
+            <div class="intro-copy">
+              <div class="eyebrow">The Publishing House</div>
+
+              <h2 id="about-title">
+                Research with a point of view.
+              </h2>
+
+              <p>
+                NVO987 is an independent publishing imprint dedicated to
+                cultural, artistic, and intellectual research. We create
+                carefully considered publications that connect visual culture,
+                history, ideas, and contemporary creative practice.
+              </p>
+
+              <p>
+                Every title is approached as an object of lasting value:
+                researched with rigor, edited with intention, and presented
+                with the clarity and visual language it deserves.
+              </p>
+
+              <div class="mission-line">
+                <span aria-hidden="true"></span>
+                <div>
+                  Our mission is simple: preserve meaningful research, amplify
+                  distinctive perspectives, and give curious readers books
+                  worth returning to.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         LIBRARY
+         ===================================================== -->
+
+    <section
+      class="section library-section"
+      id="library"
+      aria-labelledby="library-title"
+    >
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Selected Publications</div>
+
+          <h2 id="library-title">
+            The NVO987
+            <span class="gold">Library</span>
+          </h2>
+
+          <p>
+            A growing catalogue of cultural and artistic research, produced
+            for collectors, researchers, practitioners, and intellectually
+            curious readers.
+          </p>
+        </div>
+
+        <div class="library-grid">
+
+          <!-- BOOK 01 -->
+          <article class="book-card reveal">
+            <div class="book-cover" aria-label="Book cover art placeholder">
+              <span class="cover-number">NVO987 / 001</span>
+
+              <div class="cover-art" aria-hidden="true"></div>
+
+              <h3 class="cover-title">
+                Cultural
+                <br />
+                Cartographies
+              </h3>
+            </div>
+
+            <div class="book-body">
+              <div class="isbn">
+                ISBN: 978-1-XXXX-XXXX-X
+              </div>
+
+              <h3>Cultural Cartographies</h3>
+
+              <p class="book-subtitle">
+                Mapping Memory, Place &amp; Creative Identity
+              </p>
+
+              <p class="book-summary">
+                An interdisciplinary exploration of how artists and cultural
+                practitioners transform places into living archives of memory,
+                identity, and meaning.
+              </p>
+
+              <a
+                class="btn order-btn"
+                href="https://www.lulu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Order on Lulu
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- BOOK 02 -->
+          <article class="book-card reveal">
+            <div class="book-cover" aria-label="Book cover art placeholder">
+              <span class="cover-number">NVO987 / 002</span>
+
+              <div class="cover-art" aria-hidden="true"></div>
+
+              <h3 class="cover-title">
+                The
+                <br />
+                Observed Image
+              </h3>
+            </div>
+
+            <div class="book-body">
+              <div class="isbn">
+                ISBN: 978-1-XXXX-XXXX-X
+              </div>
+
+              <h3>The Observed Image</h3>
+
+              <p class="book-subtitle">
+                Art, Photography &amp; the Architecture of Looking
+              </p>
+
+              <p class="book-summary">
+                A visual study of observation and representation, examining
+                the relationship between photographic practice, perception,
+                architecture, and the constructed image.
+              </p>
+
+              <a
+                class="btn order-btn"
+                href="https://www.lulu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Order on Lulu
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- BOOK 03 -->
+          <article class="book-card reveal">
+            <div class="book-cover" aria-label="Book cover art placeholder">
+              <span class="cover-number">NVO987 / 003</span>
+
+              <div class="cover-art" aria-hidden="true"></div>
+
+              <h3 class="cover-title">
+                Notes on
+                <br />
+                the Archive
+              </h3>
+            </div>
+
+            <div class="book-body">
+              <div class="isbn">
+                ISBN: 978-1-XXXX-XXXX-X
+              </div>
+
+              <h3>Notes on the Archive</h3>
+
+              <p class="book-subtitle">
+                Fragments, Documents &amp; Cultural Memory
+              </p>
+
+              <p class="book-summary">
+                A collection of essays and visual fragments investigating the
+                archive as both evidence and creative material, from private
+                collections to contemporary cultural memory.
+              </p>
+
+              <a
+                class="btn order-btn"
+                href="https://www.lulu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Order on Lulu
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MANIFESTO
+         ===================================================== -->
+
+    <section class="manifesto" id="mission" aria-label="NVO987 manifesto">
+      <div class="manifesto-track" aria-hidden="true">
+        <div class="manifesto-item">Research</div>
+        <div class="manifesto-item">Culture</div>
+        <div class="manifesto-item">Art</div>
+        <div class="manifesto-item">Archives</div>
+        <div class="manifesto-item">Ideas</div>
+
+        <!-- Duplicate set for seamless marquee -->
+        <div class="manifesto-item">Research</div>
+        <div class="manifesto-item">Culture</div>
+        <div class="manifesto-item">Art</div>
+        <div class="manifesto-item">Archives</div>
+        <div class="manifesto-item">Ideas</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="NVO987 home">
+            <span class="brand-dot" aria-hidden="true"></span>
+            <span>NVO987</span>
+          </a>
+
+          <p>
+            Independent publishing focused on cultural and artistic research,
+            curated by Nicholas Van-Orton.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+
+          <div class="footer-links">
+            <a href="#about">About NVO987</a>
+            <a href="#library">Library</a>
+            <a href="#mission">Mission</a>
+            <a href="#top">Back to top</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Contact</div>
+
+          <div class="footer-links">
+            <a
+              class="contact-link"
+              href="mailto:nvo@nvo987.us"
+            >
+              nvo@nvo987.us
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://identity.nvo987.us"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              did:web:identity.nvo987.us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Publishing</div>
+
+          <div class="footer-links">
+            <a
+              href="https://www.lulu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lulu Bookstore ↗
+            </a>
+
+            <a
+              href="https://books.nvo987.us"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              books.nvo987.us ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span id="currentYear">2026</span> NVO987. All rights reserved.
+        </div>
+
+        <a
+          class="footer-domain"
+          href="https://books.nvo987.us"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://books.nvo987.us
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const header = document.getElementById("siteHeader");
+      const mobileToggle = document.getElementById("mobileToggle");
+      const navLinks = document.getElementById("navLinks");
+      const currentYear = document.getElementById("currentYear");
+
+      /* ---------------------------------------------
+         Dynamic copyright year
+         --------------------------------------------- */
+
+      if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+      }
+
+      /* ---------------------------------------------
+         Sticky header state
+         --------------------------------------------- */
+
+      const updateHeader = () => {
+        if (!header) return;
+
+        if (window.scrollY > 16) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      };
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, {
+        passive: true
+      });
+
+      /* ---------------------------------------------
+         Mobile navigation
+         --------------------------------------------- */
+
+      const closeMenu = () => {
+        if (!mobileToggle || !navLinks) return;
+
+        mobileToggle.classList.remove("active");
+        navLinks.classList.remove("open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+        mobileToggle.setAttribute("aria-label", "Open navigation");
+      };
+
+      const openMenu = () => {
+        if (!mobileToggle || !navLinks) return;
+
+        mobileToggle.classList.add("active");
+        navLinks.classList.add("open");
+        mobileToggle.setAttribute("aria-expanded", "true");
+        mobileToggle.setAttribute("aria-label", "Close navigation");
+      };
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", () => {
+          const isOpen = navLinks.classList.contains("open");
+
+          if (isOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+      }
+
+      if (navLinks) {
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            closeMenu();
+          });
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        if (!navLinks || !mobileToggle) return;
+
+        const clickedInsideNavigation =
+          navLinks.contains(event.target) ||
+          mobileToggle.contains(event.target);
+
+        if (!clickedInsideNavigation) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 760) {
+          closeMenu();
+        }
+      });
+
+      /* ---------------------------------------------
+         Scroll reveal
+         --------------------------------------------- */
+
+      const revealElements =
+        document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries, observerInstance) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add("visible");
+              observerInstance.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
+          }
+        );
+
+        revealElements.forEach((element) => {
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach((element) => {
+          element.classList.add("visible");
+        });
+      }
+
+      /* ---------------------------------------------
+         Smooth anchor scrolling
+         --------------------------------------------- */
+
+      document
+        .querySelectorAll('a[href^="#"]')
+        .forEach((anchor) => {
+          anchor.addEventListener("click", (event) => {
+            const targetId = anchor.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            const headerHeight = header
+              ? header.offsetHeight
+              : 0;
+
+            const targetPosition =
+              target.getBoundingClientRect().top +
+              window.scrollY -
+              headerHeight -
+              18;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth"
+            });
+          });
+        });
+
+      /* ---------------------------------------------
+         Subtle pointer interaction for book cards
+         Disabled on touch / coarse pointers.
+         --------------------------------------------- */
+
+      const canHover =
+        window.matchMedia &&
+        window.matchMedia("(hover: hover) and (pointer: fine)")
+          .matches;
+
+      if (canHover) {
+        document
+          .querySelectorAll(".book-card")
+          .forEach((card) => {
+            card.addEventListener("pointermove", (event) => {
+              const rect = card.getBoundingClientRect();
+
+              const x =
+                (event.clientX - rect.left) / rect.width;
+              const y =
+                (event.clientY - rect.top) / rect.height;
+
+              const rotateX = (0.5 - y) * 3;
+              const rotateY = (x - 0.5) * 3;
+
+              card.style.transform =
+                `translateY(-9px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener("pointerleave", () => {
+              card.style.transform = "";
+            });
+          });
+      }
+
+      /* ---------------------------------------------
+         Keyboard accessibility
+         --------------------------------------------- */
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+</body>
+  </html> 
