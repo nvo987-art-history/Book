@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NVO987 — Publishing Cultural & Artistic Research</title>
+  <meta
+    name="description"
+    content="NVO987 is the publishing house of Nicholas Van-Orton, dedicated to cultural, artistic, and research books."
+  />
+  <meta name="author" content="Nicholas Van-Orton" />
+  <meta name="theme-color" content="#08090c" />
+
+  <meta property="og:title" content="NVO987 — Publishing Cultural & Artistic Research" />
+  <meta
+    property="og:description"
+    content="Curated by Nicholas Van-Orton. A boutique publishing house for cultural, artistic, and research books."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://books.nvo987.us" />
+
+  <link rel="canonical" href="https://books.nvo987.us" />
+
+  <style>
+    /* =========================================================
+       NVO987 — Design System
+       ========================================================= */
+
+    :root {
+      --bg: #07080b;
+      --bg-soft: #0c0e13;
+      --surface: rgba(255, 255, 255, 0.055);
+      --surface-strong: rgba(255, 255, 255, 0.085);
+      --surface-border: rgba(255, 255, 255, 0.12);
+      --surface-border-soft: rgba(255, 255, 255, 0.075);
+
+      --text: #f4f3ef;
+      --text-soft: #c7c7c2;
+      --text-muted: #8f918f;
+
+      --accent: #d9c69a;
+      --accent-light: #f0e3bd;
+      --accent-glow: rgba(217, 198, 154, 0.28);
+
+      --max-width: 1240px;
+      --header-height: 76px;
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+
+      --shadow:
+        0 25px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+
+      --transition: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* =========================================================
+       Reset
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(
+          circle at 50% -20%,
+          rgba(217, 198, 154, 0.075),
+          transparent 34rem
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      color: #0b0b0b;
+      background: var(--accent-light);
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    /* =========================================================
+       Ambient Background
+       ========================================================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    .ambient {
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      filter: blur(2px);
+      opacity: 0.5;
+    }
+
+    .ambient--one {
+      width: 340px;
+      height: 340px;
+      top: 8%;
+      left: -180px;
+      background: radial-gradient(
+        circle,
+        rgba(217, 198, 154, 0.14),
+        transparent 68%
+      );
+      animation: driftOne 15s ease-in-out infinite alternate;
+    }
+
+    .ambient--two {
+      width: 500px;
+      height: 500px;
+      right: -280px;
+      top: 20%;
+      background: radial-gradient(
+        circle,
+        rgba(132, 147, 175, 0.1),
+        transparent 70%
+      );
+      animation: driftTwo 19s ease-in-out infinite alternate;
+    }
+
+    /* =========================================================
+       Layout
+       ========================================================= */
+
+    .container {
+      width: min(calc(100% - 36px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.75;
+    }
+
+    /* =========================================================
+       Header
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 12px 0;
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 58px;
+      padding: 0 16px 0 20px;
+
+      background: rgba(12, 13, 17, 0.66);
+      border: 1px solid var(--surface-border-soft);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(217, 198, 154, 0.35);
+      border-radius: 50%;
+      color: var(--accent-light);
+      font-size: 0.6rem;
+      letter-spacing: 0;
+      background:
+        radial-gradient(
+          circle at 30% 25%,
+          rgba(255,255,255,0.13),
+          transparent 50%
+        ),
+        rgba(255,255,255,0.025);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(217, 198, 154, 0.18);
+      border-radius: inherit;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 9px 14px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      bottom: 3px;
+      left: 14px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid rgba(217, 198, 154, 0.28);
+      border-radius: 999px;
+      color: var(--accent-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: rgba(217, 198, 154, 0.07);
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(217, 198, 154, 0.5);
+      background: rgba(217, 198, 154, 0.12);
+    }
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+
+    .hero {
+      display: flex;
+      min-height: 100svh;
+      padding: calc(var(--header-height) + 50px) 0 70px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        radial-gradient(
+          ellipse 65% 60% at 65% 40%,
+          rgba(217, 198, 154, 0.09),
+          transparent 68%
+        ),
+        radial-gradient(
+          ellipse 55% 70% at 20% 75%,
+          rgba(96, 116, 145, 0.09),
+          transparent 72%
+        );
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7,8,11,0.9) 0%,
+          rgba(7,8,11,0.42) 52%,
+          rgba(7,8,11,0.78) 100%
+        ),
+        linear-gradient(
+          0deg,
+          var(--bg) 0%,
+          transparent 25%,
+          transparent 78%,
+          var(--bg) 100%
+        );
+    }
+
+    .hero-grid {
+      display: grid;
+      align-items: center;
+      width: 100%;
+      gap: 50px;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      padding: 7px 11px;
+      border: 1px solid var(--surface-border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.035);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      backdrop-filter: blur(15px);
+    }
+
+    .hero-kicker span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(3.15rem, 11vw, 7.5rem);
+      font-weight: 400;
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent-light);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      max-width: 560px;
+      margin: 28px 0 0;
+      color: var(--text-soft);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 34px;
+    }
+
+    .meta-pill {
+      padding: 7px 11px;
+      border: 1px solid var(--surface-border-soft);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      color: #11100c;
+      background: var(--accent-light);
+      box-shadow:
+        0 8px 30px rgba(217, 198, 154, 0.14),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .button--secondary {
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(15px);
+    }
+
+    /* Hero visual */
+
+    .hero-art {
+      position: relative;
+      display: none;
+      min-height: 500px;
+      place-items: center;
+    }
+
+    .art-orbit {
+      position: absolute;
+      width: min(36vw, 470px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(217, 198, 154, 0.16);
+      border-radius: 50%;
+      transform: rotate(-17deg);
+      animation: orbit 20s linear infinite;
+    }
+
+    .art-orbit::before,
+    .art-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .art-orbit::before {
+      width: 9px;
+      height: 9px;
+      top: 16%;
+      left: 11%;
+      background: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .art-orbit::after {
+      width: 5px;
+      height: 5px;
+      right: 8%;
+      bottom: 24%;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 0 18px rgba(255,255,255,0.25);
+    }
+
+    .art-orbit--inner {
+      width: min(24vw, 310px);
+      border-color: rgba(255,255,255,0.09);
+      transform: rotate(35deg);
+      animation-duration: 14s;
+      animation-direction: reverse;
+    }
+
+    .art-core {
+      position: relative;
+      display: grid;
+      width: min(18vw, 225px);
+      aspect-ratio: 0.7;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.13),
+          rgba(255,255,255,0.025)
+        );
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+      backdrop-filter: blur(25px);
+      transform: perspective(1000px) rotateY(-17deg) rotateX(7deg);
+      animation: floatingBook 6s ease-in-out infinite;
+    }
+
+    .art-core::before {
+      content: "NVO987";
+      position: absolute;
+      top: 25px;
+      left: 24px;
+      color: var(--accent-light);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+    }
+
+    .art-core::after {
+      content: "CULTURE\nART\nRESEARCH";
+      white-space: pre;
+      position: absolute;
+      left: 24px;
+      bottom: 28px;
+      color: rgba(255,255,255,0.68);
+      font-family: Georgia, serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       Introduction
+       ========================================================= */
+
+    .intro {
+      padding: 110px 0;
+    }
+
+    .intro-layout {
+      display: grid;
+      gap: 42px;
+    }
+
+    .intro-heading h2 {
+      max-width: 600px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 7vw, 4.9rem);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .intro-heading h2 em {
+      color: var(--accent-light);
+    }
+
+    .intro-copy {
+      max-width: 640px;
+    }
+
+    .intro-copy p {
+      margin: 0 0 22px;
+      color: var(--text-soft);
+      font-size: 1rem;
+    }
+
+    .intro-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================
+       Philosophy Cards
+       ========================================================= */
+
+    .philosophy {
+      padding: 20px 0 120px;
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      max-width: 550px;
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .philosophy-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .glass-card {
+      position: relative;
+      min-height: 250px;
+      padding: 27px;
+      overflow: hidden;
+      border: 1px solid var(--surface-border-soft);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.065),
+          rgba(255,255,255,0.018)
+        );
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px) saturate(125%);
+      -webkit-backdrop-filter: blur(20px) saturate(125%);
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(217, 198, 154, 0.22);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.085),
+          rgba(255,255,255,0.022)
+        );
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      top: -100px;
+      right: -80px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(217,198,154,0.13),
+        transparent 70%
+      );
+    }
+
+    .card-number {
+      display: block;
+      margin-bottom: 65px;
+      color: var(--accent);
+      font-family: Georgia, serif;
+      font-size: 0.85rem;
+    }
+
+    .glass-card h3 {
+      margin: 0 0 9px;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .glass-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       About / Founder
+       ========================================================= */
+
+    .about {
+      padding: 0 0 120px;
+    }
+
+    .about-panel {
+      position: relative;
+      display: grid;
+      gap: 42px;
+      padding: 34px;
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.018)
+        );
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+    }
+
+    .about-panel::before {
+      content: "NVO987";
+      position: absolute;
+      right: -35px;
+      bottom: -75px;
+      color: rgba(255,255,255,0.025);
+      font-size: clamp(5rem, 20vw, 13rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .about-identity {
+      position: relative;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: min(100%, 330px);
+      aspect-ratio: 0.82;
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      border-radius: 18px;
+      background:
+        radial-gradient(
+          circle at 50% 32%,
+          rgba(217,198,154,0.18),
+          transparent 34%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.08),
+          rgba(255,255,255,0.018)
+        );
+    }
+
+    .portrait-frame::before {
+      content: "N";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.045);
+      font-family: Georgia, serif;
+      font-size: 16rem;
+      line-height: 1;
+    }
+
+    .portrait-frame::after {
+      content: "NICHOLAS VAN-ORTON";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      left: 18px;
+      padding-top: 11px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: var(--accent-light);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .about-copy {
+      position: relative;
+      max-width: 690px;
+    }
+
+    .about-copy h2 {
+      margin: 0 0 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .about-copy h2 span {
+      color: var(--accent-light);
+      font-style: italic;
+    }
+
+    .about-copy p {
+      margin: 0 0 20px;
+      color: var(--text-soft);
+    }
+
+    .signature {
+      margin-top: 30px;
+      color: var(--accent-light);
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+
+    .site-footer {
+      position: relative;
+      padding: 70px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.015),
+          rgba(255,255,255,0)
+        );
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 42px;
+      padding-bottom: 58px;
+    }
+
+    .footer-brand {
+      max-width: 330px;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 20px;
+    }
+
+    .footer-description {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 18px;
+      color: var(--text);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-light);
+    }
+
+    .footer-contact a {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--text-soft);
+      font-size: 0.84rem;
+      word-break: break-word;
+      transition: color var(--transition);
+    }
+
+    .footer-contact a:hover {
+      color: var(--accent-light);
+    }
+
+    .did {
+      display: block;
+      max-width: 240px;
+      overflow-wrap: anywhere;
+    }
+
+    .copyright {
+      padding: 22px 0 25px;
+      border-top: 1px solid rgba(255,255,255,0.075);
+      color: #686b6b;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+    }
+
+    .copyright-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* =========================================================
+       Animations
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: reveal 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 120ms;
+    }
+
+    .delay-2 {
+      animation-delay: 220ms;
+    }
+
+    .delay-3 {
+      animation-delay: 340ms;
+    }
+
+    .delay-4 {
+      animation-delay: 470ms;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.55;
+        transform: scale(0.85);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes orbit {
+      from {
+        transform: rotate(-17deg) rotate(0deg);
+      }
+      to {
+        transform: rotate(-17deg) rotate(360deg);
+      }
+    }
+
+    @keyframes floatingBook {
+      0%, 100% {
+        transform:
+          perspective(1000px)
+          rotateY(-17deg)
+          rotateX(7deg)
+          translateY(0);
+      }
+      50% {
+        transform:
+          perspective(1000px)
+          rotateY(-12deg)
+          rotateX(5deg)
+          translateY(-15px);
+      }
+    }
+
+    @keyframes driftOne {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      to {
+        transform: translate3d(70px, 80px, 0) scale(1.12);
+      }
+    }
+
+    @keyframes driftTwo {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      to {
+        transform: translate3d(-80px, 50px, 0) scale(0.92);
+      }
+    }
+
+    /* =========================================================
+       Tablet
+       ========================================================= */
+
+    @media (min-width: 680px) {
+      .container {
+        width: min(calc(100% - 64px), var(--max-width));
+      }
+
+      .nav-links {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: calc(var(--header-height) + 80px);
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.65fr);
+      }
+
+      .hero-art {
+        display: grid;
+      }
+
+      .intro-layout {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: start;
+      }
+
+      .philosophy-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about-panel {
+        grid-template-columns: 0.75fr 1.25fr;
+        align-items: center;
+        padding: 52px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.4fr 0.8fr 1.1fr 1.1fr;
+      }
+
+      .copyright-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    /* =========================================================
+       Desktop
+       ========================================================= */
+
+    @media (min-width: 1024px) {
+      .container {
+        width: min(calc(100% - 80px), var(--max-width));
+      }
+
+      .nav-shell {
+        padding-left: 22px;
+      }
+
+      .hero {
+        min-height: 900px;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.7fr);
+        gap: 80px;
+      }
+
+      .hero-art {
+        min-height: 620px;
+      }
+
+      .intro {
+        padding: 170px 0;
+      }
+
+      .intro-layout {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 110px;
+      }
+
+      .philosophy {
+        padding-bottom: 170px;
+      }
+
+      .about {
+        padding-bottom: 170px;
+      }
+
+      .about-panel {
+        padding: 70px;
+        gap: 90px;
+      }
+
+      .footer-grid {
+        gap: 70px;
+      }
+    }
+
+    /* =========================================================
+       Reduced Motion
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <!-- =======================================================
+       Header
+       ======================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-shell" aria-label="Primary navigation">
+
+        <a class="brand" href="#top" aria-label="NVO987 home">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span>NVO987</span>
+        </a>
+
+        <div class="nav-links">
+          <a class="nav-link" href="#library">Library</a>
+          <a class="nav-link" href="#research">Research</a>
+          <a class="nav-link" href="#about">About</a>
+        </div>
+
+        <a class="nav-cta" href="mailto:nvo@nvo987.us">
+          Contact
+          <span aria-hidden="true">↗</span>
+        </a>
+
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =====================================================
+         Hero
+         ====================================================== -->
+    <section class="hero" aria-labelledby="hero-title">
+
+      <div class="hero-content container">
+
+        <div class="hero-grid">
+
+          <div>
+            <div class="hero-kicker reveal">
+              <span aria-hidden="true"></span>
+              Independent Boutique Publishing
+            </div>
+
+            <h1 id="hero-title" class="reveal delay-1">
+              NVO987:
+              <span class="accent">Publishing</span>
+              Cultural &amp; Artistic Research
+            </h1>
+
+            <p class="hero-subtitle reveal delay-2">
+              Curated by Nicholas Van-Orton
+            </p>
+
+            <div class="hero-meta reveal delay-3" aria-label="Publishing disciplines">
+              <span class="meta-pill">Culture</span>
+              <span class="meta-pill">Art</span>
+              <span class="meta-pill">Research</span>
+              <span class="meta-pill">Books</span>
+            </div>
+
+            <div class="hero-actions reveal delay-4">
+              <a class="button button--primary" href="#library">
+                Explore the Library
+                <span aria-hidden="true">↓</span>
+              </a>
+
+              <a class="button button--secondary" href="#about">
+                Discover NVO987
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-orbit"></div>
+            <div class="art-orbit art-orbit--inner"></div>
+            <div class="art-core"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         Introduction
+         ====================================================== -->
+    <section class="intro" id="library" aria-labelledby="library-title">
+
+      <div class="container">
+        <div class="intro-layout">
+
+          <div class="intro-heading reveal">
+            <p class="eyebrow">The Library</p>
+
+            <h2 id="library-title">
+              Books made for
+              <em>deeper looking.</em>
+            </h2>
+          </div>
+
+          <div class="intro-copy reveal delay-1">
+            <p>
+              NVO987 is a boutique publishing house devoted to books that
+              reward attention. We publish cultural, artistic, and research
+              works that examine the ideas, histories, images, and human
+              experiences shaping our world.
+            </p>
+
+            <p>
+              Each publication is approached as an intellectual and material
+              object: carefully considered, deliberately edited, and designed
+              to remain meaningful beyond the moment of publication.
+            </p>
+
+            <p>
+              The aim is not simply to add more books to the world, but to
+              create works with enough depth, clarity, and character to become
+              part of an enduring cultural conversation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         Research Philosophy
+         ====================================================== -->
+    <section class="philosophy" id="research" aria-labelledby="research-title">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <p class="eyebrow">Editorial Philosophy</p>
+
+          <h2 id="research-title">
+            Curiosity is the beginning.
+            <br />
+            <span>Depth is the destination.</span>
+          </h2>
+
+          <p>
+            NVO987 brings together research, cultural inquiry, artistic
+            practice, and considered publishing to create books with lasting
+            intellectual value.
+          </p>
+        </div>
+
+        <div class="philosophy-grid">
+
+          <article class="glass-card reveal delay-1">
+            <span class="card-number">01</span>
+
+            <h3>Research</h3>
+
+            <p>
+              Rigorous investigation and original thinking form the foundation
+              of every meaningful publication.
+            </p>
+          </article>
+
+          <article class="glass-card reveal delay-2">
+            <span class="card-number">02</span>
+
+            <h3>Culture</h3>
+
+            <p>
+              We explore the ideas, artifacts, histories, and perspectives
+              through which cultures understand themselves.
+            </p>
+          </article>
+
+          <article class="glass-card reveal delay-3">
+            <span class="card-number">03</span>
+
+            <h3>Art</h3>
+
+            <p>
+              Artistic practice offers another way of seeing. NVO987 gives
+              space to visual language, interpretation, experimentation, and
+              creative inquiry.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         About Nicholas Van-Orton
+         ====================================================== -->
+    <section class="about" id="about" aria-labelledby="about-title">
+
+      <div class="container">
+
+        <div class="about-panel">
+
+          <div class="about-identity reveal">
+            <div
+              class="portrait-frame"
+              role="img"
+              aria-label="Abstract NVO987 founder identity artwork"
+            ></div>
+          </div>
+
+          <div class="about-copy reveal delay-1">
+            <p class="eyebrow">The Publisher</p>
+
+            <h2 id="about-title">
+              Nicholas
+              <span>Van-Orton.</span>
+            </h2>
+
+            <p>
+              I created NVO987 from a conviction that publishing can be more
+              than the production of books. It can be an act of cultural
+              preservation, intellectual exploration, and meaningful
+              communication.
+            </p>
+
+            <p>
+              My vision is to develop publications that investigate subjects
+              with patience and seriousness while remaining accessible,
+              visually compelling, and deeply human. I am interested in the
+              territory where research meets culture, where art meets history,
+              and where individual observation opens onto larger questions.
+            </p>
+
+            <p>
+              NVO987 is therefore intentionally selective. The goal is to
+              publish works that have something substantial to say—and to give
+              those works the editorial attention and visual presence they
+              deserve.
+            </p>
+
+            <div class="signature">
+              Nicholas Van-Orton
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       Footer
+       ======================================================== -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand footer-column">
+          <a class="brand" href="#top" aria-label="NVO987 home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span>NVO987</span>
+          </a>
+
+          <p class="footer-description">
+            A boutique publishing house dedicated to cultural, artistic, and
+            research books with enduring intellectual and cultural value.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+
+          <ul class="footer-links">
+            <li><a href="#library">Library</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#top">Back to Top</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column footer-contact">
+          <h3>Contact</h3>
+
+          <a href="mailto:nvo@nvo987.us">
+            nvo@nvo987.us
+          </a>
+
+          <p class="footer-description">
+            For publishing inquiries, research collaborations, and
+            professional correspondence.
+          </p>
+        </div>
+
+        <div class="footer-column footer-contact">
+          <h3>Identity</h3>
+
+          <a
+            class="did"
+            href="did:web:identity.nvo987.us"
+            aria-label="NVO987 decentralized identifier"
+          >
+            did:web:identity.nvo987.us
+          </a>
+
+          <p class="footer-description">
+            Official decentralized identity for NVO987.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        <div class="copyright-inner">
+          <span>
+            © 2026 NVO987. All rights reserved.
+          </span>
+
+          <span>
+            Published by Nicholas Van-Orton.
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+  </html>
