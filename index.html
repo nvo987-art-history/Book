@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NVO987 — Cultural and artistic research publishing curated by Nicholas Van-Orton." />
+  <meta name="theme-color" content="#040405" />
+  <title>NVO987 — Cultural & Artistic Research</title>
+
+  <style>
+    /* =========================================================
+       NVO987 — PREMIUM PUBLISHING EXPERIENCE
+       Self-contained HTML / CSS / JS
+       ========================================================= */
+
+    :root {
+      --obsidian: #040405;
+      --obsidian-soft: #08090b;
+      --surface: rgba(16, 17, 20, 0.72);
+      --surface-strong: rgba(20, 21, 25, 0.9);
+      --surface-light: rgba(255, 255, 255, 0.045);
+
+      --white: #f9fafb;
+      --white-soft: #e5e7eb;
+      --body: #9ca3af;
+      --muted: #6b7280;
+
+      --gold: #d4af37;
+      --gold-light: #f2d675;
+      --gold-deep: #96781f;
+      --bronze: #9b6b3d;
+
+      --line: rgba(255, 255, 255, 0.09);
+      --line-gold: rgba(212, 175, 55, 0.24);
+
+      --shadow:
+        0 30px 80px rgba(0, 0, 0, 0.42),
+        0 10px 30px rgba(0, 0, 0, 0.22);
+
+      --max-width: 1280px;
+      --nav-height: 82px;
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+
+      --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      background: var(--obsidian);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-width: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(
+          circle at 50% -20%,
+          rgba(212, 175, 55, 0.055),
+          transparent 38%
+        ),
+        var(--obsidian);
+      color: var(--white);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img,
+    svg,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: rgba(212, 175, 55, 0.28);
+      color: #fff;
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
+    .skip-link {
+      position: fixed;
+      left: 20px;
+      top: -100px;
+      z-index: 9999;
+      padding: 12px 18px;
+      border: 1px solid var(--line-gold);
+      border-radius: 10px;
+      background: #101114;
+      color: var(--white);
+      transition: top 0.25s ease;
+    }
+
+    .skip-link:focus {
+      top: 20px;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
+    }
+
+    /* =========================================================
+       GLOBAL UTILITIES
+       ========================================================= */
+
+    .container {
+      width: min(calc(100% - 48px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .gold-text {
+      color: var(--gold);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 20px;
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.19em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold)
+      );
+    }
+
+    .section-heading {
+      max-width: 820px;
+      margin: 0;
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(2.35rem, 5vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: var(--body);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      height: var(--nav-height);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 4, 5, 0.92),
+          rgba(4, 4, 5, 0.72)
+        );
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .site-header.scrolled {
+      border-bottom-color: rgba(212, 175, 55, 0.12);
+      background: rgba(4, 4, 5, 0.94);
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.26);
+    }
+
+    .nav-inner {
+      width: min(calc(100% - 48px), var(--max-width));
+      height: 100%;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+      color: var(--white);
+      font-size: 1.08rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      line-height: 1;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow:
+        0 0 7px rgba(212, 175, 55, 0.95),
+        0 0 20px rgba(212, 175, 55, 0.38);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(20px, 4vw, 52px);
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 10px 0;
+      color: #b9bdc4;
+      font-size: 0.91rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 3px;
+      height: 1px;
+      background: var(--gold);
+      transition: right 0.35s var(--ease-premium);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--white);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      right: 0;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: min(920px, 100svh);
+      padding:
+        calc(var(--nav-height) + 110px)
+        0
+        100px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: #040405;
+    }
+
+    /*
+      Layered mesh lighting.
+      Each pseudo-element is intentionally large and blurred.
+      The movement is slow to create a sophisticated, almost
+      physical lighting quality instead of a conventional gradient.
+    */
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -3;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(70px);
+      will-change: transform;
+    }
+
+    .hero::before {
+      width: 75vw;
+      height: 75vw;
+      top: -38%;
+      left: -20%;
+      opacity: 0.9;
+      background:
+        radial-gradient(
+          circle at 45% 50%,
+          rgba(212, 175, 55, 0.18) 0%,
+          rgba(156, 107, 61, 0.12) 17%,
+          rgba(80, 58, 27, 0.055) 35%,
+          transparent 67%
+        );
+      animation: meshFloatA 17s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      width: 70vw;
+      height: 70vw;
+      right: -30%;
+      bottom: -45%;
+      opacity: 0.85;
+      background:
+        radial-gradient(
+          circle at 45% 45%,
+          rgba(166, 116, 59, 0.16) 0%,
+          rgba(212, 175, 55, 0.08) 22%,
+          rgba(65, 45, 21, 0.045) 40%,
+          transparent 70%
+        );
+      animation: meshFloatB 21s ease-in-out infinite alternate;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      z-index: -2;
+      inset: -20%;
+      pointer-events: none;
+      opacity: 0.72;
+      filter: blur(1px);
+      background:
+        radial-gradient(
+          ellipse 35% 25% at 62% 24%,
+          rgba(242, 214, 117, 0.105),
+          transparent 72%
+        ),
+        radial-gradient(
+          ellipse 28% 36% at 25% 64%,
+          rgba(155, 107, 61, 0.095),
+          transparent 72%
+        ),
+        radial-gradient(
+          ellipse 38% 30% at 80% 76%,
+          rgba(212, 175, 55, 0.065),
+          transparent 70%
+        );
+      animation: meshDrift 25s ease-in-out infinite alternate;
+    }
+
+    .hero-grid {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.17;
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.032) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.032) 1px,
+          transparent 1px
+        );
+      background-size: 72px 72px;
+      mask-image: radial-gradient(
+        ellipse at center,
+        black 0%,
+        transparent 72%
+      );
+      -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 0%,
+        transparent 72%
+      );
+    }
+
+    .hero-vignette {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at center,
+          transparent 20%,
+          rgba(4, 4, 5, 0.18) 60%,
+          rgba(4, 4, 5, 0.9) 100%
+        );
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 48px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .hero-copy {
+      max-width: 1050px;
+    }
+
+    .hero-eyebrow {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: revealUp 1s 0.1s var(--ease-premium) forwards;
+    }
+
+    .hero-title {
+      max-width: 1050px;
+      margin: 0;
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(3.25rem, 8.2vw, 7.8rem);
+      font-weight: 400;
+      letter-spacing: -0.065em;
+      line-height: 0.9;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(35px);
+      animation: revealUp 1.2s 0.22s var(--ease-premium) forwards;
+    }
+
+    .hero-title .gold {
+      color: var(--gold-light);
+      text-shadow: 0 0 50px rgba(212, 175, 55, 0.12);
+    }
+
+    .hero-subtitle {
+      margin: 34px 0 0;
+      color: #c7c9ce;
+      font-size: clamp(1.08rem, 2vw, 1.45rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: revealUp 1s 0.4s var(--ease-premium) forwards;
+    }
+
+    .hero-subtitle strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 44px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: revealUp 1s 0.54s var(--ease-premium) forwards;
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      min-height: 56px;
+      padding: 0 27px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      overflow: hidden;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 750;
+      letter-spacing: 0.035em;
+      transition:
+        transform 0.35s var(--ease-premium),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.16) 45%,
+        transparent 70%
+      );
+      transform: translateX(-130%);
+      transition: transform 0.7s var(--ease-premium);
+    }
+
+    .btn:hover::before {
+      transform: translateX(130%);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #11100b;
+      background:
+        linear-gradient(
+          135deg,
+          #efd16a,
+          #d4af37 48%,
+          #b58d24
+        );
+      box-shadow:
+        0 10px 30px rgba(212, 175, 55, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 16px 45px rgba(212, 175, 55, 0.25),
+        0 0 32px rgba(212, 175, 55, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border-color: rgba(212, 175, 55, 0.38);
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(242, 214, 117, 0.7);
+      background: rgba(212, 175, 55, 0.08);
+      box-shadow: 0 12px 38px rgba(212, 175, 55, 0.11);
+    }
+
+    .btn-arrow {
+      font-size: 1.05rem;
+      transition: transform 0.35s var(--ease-premium);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 76px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      animation: revealUp 1s 0.7s var(--ease-premium) forwards;
+    }
+
+    .hero-meta-item {
+      color: #767b83;
+      font-size: 0.79rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-item span {
+      color: #c7c9ce;
+    }
+
+    /* =========================================================
+       INTRODUCTION
+       ========================================================= */
+
+    .intro-section {
+      position: relative;
+      padding: 150px 0;
+    }
+
+    .intro-card {
+      position: relative;
+      isolation: isolate;
+      padding: clamp(34px, 6vw, 78px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.055),
+          rgba(255, 255, 255, 0.018)
+        );
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(25px) saturate(130%);
+      -webkit-backdrop-filter: blur(25px) saturate(130%);
+    }
+
+    .intro-card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 400px;
+      height: 400px;
+      top: -230px;
+      right: -120px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.065);
+      filter: blur(70px);
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(40px, 8vw, 120px);
+      align-items: start;
+    }
+
+    .intro-title {
+      margin: 0;
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(2.1rem, 4vw, 3.7rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+
+    .intro-copy {
+      margin: 0;
+      color: var(--body);
+      font-size: clamp(1.02rem, 1.5vw, 1.17rem);
+      line-height: 1.9;
+    }
+
+    .intro-copy + .intro-copy {
+      margin-top: 24px;
+    }
+
+    .signature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 38px;
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .signature::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* =========================================================
+       LIBRARY
+       ========================================================= */
+
+    .library-section {
+      position: relative;
+      padding: 50px 0 150px;
+    }
+
+    .library-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 62px;
+    }
+
+    .library-header .section-intro {
+      max-width: 540px;
+    }
+
+    .library-mark {
+      flex: 0 0 auto;
+      color: rgba(212, 175, 55, 0.55);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .book-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.048),
+          rgba(255, 255, 255, 0.015)
+        );
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+      transition:
+        transform 0.5s var(--ease-premium),
+        border-color 0.4s ease,
+        box-shadow 0.5s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.25);
+      box-shadow:
+        0 35px 75px rgba(0, 0, 0, 0.38),
+        0 0 40px rgba(212, 175, 55, 0.045);
+    }
+
+    /* Structured future-cover placeholder */
+    .book-cover {
+      position: relative;
+      aspect-ratio: 4 / 5.45;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 13px;
+      background:
+        radial-gradient(
+          ellipse at 30% 20%,
+          rgba(212, 175, 55, 0.16),
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at 80% 85%,
+          rgba(145, 94, 45, 0.12),
+          transparent 42%
+        ),
+        #0a0b0d;
+      border: 1px solid rgba(212, 175, 55, 0.14);
+    }
+
+    .book-cover::before {
+      content: "";
+      position: absolute;
+      inset: 9%;
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      border-radius: 4px;
+    }
+
+    .book-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          135deg,
+          transparent 20%,
+          rgba(255, 255, 255, 0.035) 50%,
+          transparent 80%
+        );
+      transform: translateX(-100%);
+      transition: transform 0.9s var(--ease-premium);
+    }
+
+    .book-card:hover .book-cover::after {
+      transform: translateX(100%);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      width: 72%;
+      text-align: center;
+    }
+
+    .cover-label {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: clamp(1.45rem, 2.3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .cover-rule {
+      width: 54px;
+      height: 1px;
+      margin: 20px auto;
+      background: var(--gold);
+    }
+
+    .cover-placeholder {
+      color: #666a70;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .book-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 25px 10px 10px;
+    }
+
+    .isbn {
+      margin: 0 0 13px;
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .book-title {
+      margin: 0;
+      color: var(--white);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.13;
+    }
+
+    .book-description {
+      margin: 15px 0 27px;
+      color: var(--body);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .book-actions {
+      margin-top: auto;
+    }
+
+    .book-button {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
+      color: var(--white);
+      background: rgba(212, 175, 55, 0.055);
+      font-size: 0.84rem;
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s var(--ease-premium);
+    }
+
+    .book-button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(242, 214, 117, 0.7);
+      background: rgba(212, 175, 55, 0.11);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    }
+
+    .book-button-arrow {
+      color: var(--gold-light);
+      font-size: 1.15rem;
+      transition: transform 0.3s var(--ease-premium);
+    }
+
+    .book-button:hover .book-button-arrow {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .site-footer {
+      position: relative;
+      padding: 90px 0 35px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      background:
+        radial-gradient(
+          ellipse at 75% 0%,
+          rgba(212, 175, 55, 0.055),
+          transparent 35%
+        ),
+        #020203;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 72px;
+    }
+
+    .footer-brand {
+      max-width: 330px;
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 20px;
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 750;
+      letter-spacing: 0.13em;
+    }
+
+    .footer-overview {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .footer-heading {
+      margin: 5px 0 22px;
+      color: var(--white);
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-link {
+      width: fit-content;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition:
+        color 0.25s ease,
+        transform 0.25s var(--ease-premium);
+    }
+
+    .footer-link:hover {
+      color: var(--gold-light);
+      transform: translateX(3px);
+    }
+
+    .footer-contact {
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer-contact-label {
+      display: block;
+      margin-bottom: 4px;
+      color: #5f636a;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .footer-contact-link {
+      display: inline-block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      color: #c7c9ce;
+      font-size: 0.9rem;
+      transition: color 0.25s ease;
+    }
+
+    .footer-contact-link:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.065);
+    }
+
+    .copyright {
+      margin: 0;
+      color: #555960;
+      font-size: 0.76rem;
+    }
+
+    .footer-domain {
+      color: #7c8087;
+      font-size: 0.76rem;
+      transition: color 0.25s ease;
+    }
+
+    .footer-domain:hover {
+      color: var(--gold);
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity 0.9s var(--ease-premium),
+        transform 0.9s var(--ease-premium);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .book-card.reveal:nth-child(2) {
+      transition-delay: 90ms;
+    }
+
+    .book-card.reveal:nth-child(3) {
+      transition-delay: 180ms;
+    }
+
+    /* =========================================================
+       ANIMATIONS
+       ========================================================= */
+
+    @keyframes revealUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes meshFloatA {
+      0% {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(6%, 4%, 0) scale(1.06);
+      }
+      100% {
+        transform: translate3d(2%, 8%, 0) scale(0.98);
+      }
+    }
+
+    @keyframes meshFloatB {
+      0% {
+        transform: translate3d(4%, 2%, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-4%, -4%, 0) scale(1.07);
+      }
+      100% {
+        transform: translate3d(-8%, 3%, 0) scale(1);
+      }
+    }
+
+    @keyframes meshDrift {
+      0% {
+        transform: translate3d(-2%, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(3%, -2%, 0) scale(1.04);
+      }
+      100% {
+        transform: translate3d(0, 4%, 0) scale(0.99);
+      }
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+      .book-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .intro-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --nav-height: 70px;
+      }
+
+      .container,
+      .nav-inner,
+      .hero-inner {
+        width: min(calc(100% - 32px), var(--max-width));
+      }
+
+      /*
+        Intentionally NOT replaced by a hamburger.
+        Navigation remains visible at every viewport size.
+      */
+
+      .nav-inner {
+        gap: 16px;
+      }
+
+      .brand {
+        font-size: 0.93rem;
+        letter-spacing: 0.11em;
+      }
+
+      .brand-dot {
+        width: 7px;
+        height: 7px;
+        flex-basis: 7px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .nav-link {
+        padding: 8px 0;
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding:
+          calc(var(--nav-height) + 80px)
+          0
+          75px;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 15vw, 5.3rem);
+        line-height: 0.91;
+      }
+
+      .hero-subtitle {
+        margin-top: 28px;
+        font-size: 1.03rem;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+        max-width: 360px;
+        margin-top: 34px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-meta {
+        margin-top: 55px;
+        gap: 12px 20px;
+      }
+
+      .hero-meta-item {
+        font-size: 0.68rem;
+      }
+
+      .intro-section {
+        padding: 90px 0;
+      }
+
+      .intro-card {
+        padding: 31px 25px;
+        border-radius: 22px;
+      }
+
+      .library-section {
+        padding: 20px 0 95px;
+      }
+
+      .library-header {
+        align-items: start;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 40px;
+      }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .book-cover {
+        aspect-ratio: 4 / 4.9;
+      }
+
+      .site-footer {
+        padding: 70px 0 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-bottom: 55px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-link {
+        font-size: 0.72rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.75rem, 14vw, 4.4rem);
+      }
+
+      .eyebrow {
+        font-size: 0.69rem;
+        letter-spacing: 0.14em;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================== -->
+
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner" aria-label="Primary navigation">
+
+      <a class="brand" href="#top" aria-label="NVO987 home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>NVO987</span>
+      </a>
+
+      <!-- Always-visible horizontal navigation -->
+      <div class="nav-links">
+        <a class="nav-link" href="#library">Library</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#store">Store</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =====================================================
+         HERO
+         ====================================================== -->
+
+    <section class="hero" id="top" aria-labelledby="hero-title">
+
+      <div class="hero-mesh" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+
+          <p class="eyebrow hero-eyebrow">
+            NVO987 · Cultural Research Publishing
+          </p>
+
+          <h1 class="hero-title" id="hero-title">
+            NVO987:
+            <span class="gold">Publishing</span>
+            Cultural &amp; Artistic Research
+          </h1>
+
+          <p class="hero-subtitle">
+            Curated by <strong>Nicholas Van-Orton</strong>
+          </p>
+
+          <div class="hero-actions">
+
+            <a class="btn btn-primary" href="#library">
+              <span>Explore Library</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://www.lulu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Visit Lulu Store</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+
+          <div class="hero-meta" aria-label="Publisher information">
+            <div class="hero-meta-item">
+              Publisher <span>· NVO987</span>
+            </div>
+            <div class="hero-meta-item">
+              Curator <span>· Nicholas Van-Orton</span>
+            </div>
+            <div class="hero-meta-item">
+              Focus <span>· Culture / Art / Research</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         PUBLISHER INTRODUCTION
+         ====================================================== -->
+
+    <section class="intro-section" id="about" aria-labelledby="about-title">
+
+      <div class="container">
+
+        <article class="intro-card reveal">
+
+          <div class="intro-layout">
+
+            <div>
+              <p class="eyebrow">The Publisher</p>
+
+              <h2 class="intro-title" id="about-title">
+                Research with cultural depth.
+              </h2>
+            </div>
+
+            <div>
+
+              <p class="intro-copy">
+                NVO987 is an independent publishing imprint dedicated to
+                thoughtful cultural, artistic, and research-driven works.
+                Each publication is approached as an enduring object:
+                rigorous in its ideas, deliberate in its presentation,
+                and created for readers who value depth over noise.
+              </p>
+
+              <p class="intro-copy">
+                Curated by Nicholas Van-Orton, the catalogue explores
+                intersections between culture, visual expression,
+                history, identity, and independent inquiry. The mission
+                is simple: preserve meaningful research, give distinctive
+                ideas a considered form, and place them in the hands of
+                curious readers.
+              </p>
+
+              <div class="signature">
+                Nicholas Van-Orton
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         LIBRARY
+         ====================================================== -->
+
+    <section class="library-section" id="library" aria-labelledby="library-title">
+
+      <div class="container">
+
+        <div class="library-header reveal">
+
+          <div>
+            <p class="eyebrow">The Library</p>
+
+            <h2 class="section-heading" id="library-title">
+              Selected works.
+              <span class="gold-text">Considered carefully.</span>
+            </h2>
+
+            <p class="section-intro">
+              A growing catalogue of cultural and artistic research,
+              published with an emphasis on substance, originality,
+              and lasting relevance.
+            </p>
+          </div>
+
+          <div class="library-mark">
+            NVO987 / 001—∞
+          </div>
+
+        </div>
+
+        <div class="book-grid">
+
+          <!-- =================================================
+               BOOK 01
+               ================================================== -->
+
+          <article class="book-card reveal">
+
+            <div
+              class="book-cover"
+              role="img"
+              aria-label="Placeholder cover art for Cultural Memory"
+            >
+              <div class="cover-content">
+                <span class="cover-label">NVO987 · Research</span>
+
+                <div class="cover-title">
+                  Cultural<br />
+                  Memory
+                </div>
+
+                <div class="cover-rule"></div>
+
+                <div class="cover-placeholder">
+                  Cover Art Placeholder
+                </div>
+              </div>
+            </div>
+
+            <div class="book-content">
+
+              <p class="isbn">
+                ISBN: 978-1-0000-0001-1
+              </p>
+
+              <h3 class="book-title">
+                Cultural Memory
+              </h3>
+
+              <p class="book-description">
+                An exploratory study of memory, identity, heritage,
+                and the ways cultural narratives persist across
+                generations and artistic forms.
+              </p>
+
+              <div class="book-actions">
+                <a
+                  class="book-button"
+                  href="https://www.lulu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Order on Lulu</span>
+                  <span class="book-button-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- =================================================
+               BOOK 02
+               ================================================== -->
+
+          <article class="book-card reveal">
+
+            <div
+              class="book-cover"
+              role="img"
+              aria-label="Placeholder cover art for Art and Inquiry"
+            >
+              <div class="cover-content">
+                <span class="cover-label">NVO987 · Studies</span>
+
+                <div class="cover-title">
+                  Art &amp;<br />
+                  Inquiry
+                </div>
+
+                <div class="cover-rule"></div>
+
+                <div class="cover-placeholder">
+                  Cover Art Placeholder
+                </div>
+              </div>
+            </div>
+
+            <div class="book-content">
+
+              <p class="isbn">
+                ISBN: 978-1-0000-0002-8
+              </p>
+
+              <h3 class="book-title">
+                Art &amp; Inquiry
+              </h3>
+
+              <p class="book-description">
+                A collection examining artistic practice as a method
+                of investigation, questioning how creative work can
+                reveal ideas that conventional research overlooks.
+              </p>
+
+              <div class="book-actions">
+                <a
+                  class="book-button"
+                  href="https://www.lulu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Order on Lulu</span>
+                  <span class="book-button-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- =================================================
+               BOOK 03
+               ================================================== -->
+
+          <article class="book-card reveal">
+
+            <div
+              class="book-cover"
+              role="img"
+              aria-label="Placeholder cover art for Independent Perspectives"
+            >
+              <div class="cover-content">
+                <span class="cover-label">NVO987 · Perspectives</span>
+
+                <div class="cover-title">
+                  Independent<br />
+                  Perspectives
+                </div>
+
+                <div class="cover-rule"></div>
+
+                <div class="cover-placeholder">
+                  Cover Art Placeholder
+                </div>
+              </div>
+            </div>
+
+            <div class="book-content">
+
+              <p class="isbn">
+                ISBN: 978-1-0000-0003-5
+              </p>
+
+              <h3 class="book-title">
+                Independent Perspectives
+              </h3>
+
+              <p class="book-description">
+                Essays and research exploring independent thought,
+                contemporary culture, and the overlooked perspectives
+                that enrich our understanding of society.
+              </p>
+
+              <div class="book-actions">
+                <a
+                  class="book-button"
+                  href="https://www.lulu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Order on Lulu</span>
+                  <span class="book-button-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================== -->
+
+  <footer class="site-footer" id="store">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand overview -->
+
+        <div class="footer-brand">
+
+          <div class="footer-logo">
+            <span class="brand-dot" aria-hidden="true"></span>
+            <span>NVO987</span>
+          </div>
+
+          <p class="footer-overview">
+            Independent cultural and artistic research publishing,
+            curated by Nicholas Van-Orton. Thoughtful work,
+            deliberately published.
+          </p>
+
+        </div>
+
+        <!-- Quick links -->
+
+        <div>
+
+          <h2 class="footer-heading">
+            Explore
+          </h2>
+
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a class="footer-link" href="#library">Library</a>
+            <a class="footer-link" href="#about">About</a>
+            <a class="footer-link" href="https://www.lulu.com" target="_blank" rel="noopener noreferrer">
+              Lulu Store
+            </a>
+          </nav>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div>
+
+          <h2 class="footer-heading">
+            Contact
+          </h2>
+
+          <div class="footer-contact">
+
+            <div>
+              <span class="footer-contact-label">Email</span>
+
+              <a
+                class="footer-contact-link"
+                href="mailto:nvo@nvo987.us"
+              >
+                nvo@nvo987.us
+              </a>
+            </div>
+
+            <div>
+              <span class="footer-contact-label">DID</span>
+
+              <a
+                class="footer-contact-link"
+                href="https://identity.nvo987.us"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                did:web:identity.nvo987.us
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Publisher -->
+
+        <div>
+
+          <h2 class="footer-heading">
+            Publisher
+          </h2>
+
+          <div class="footer-contact">
+
+            <div>
+              <span class="footer-contact-label">Curated by</span>
+
+              <span class="footer-contact-link">
+                Nicholas Van-Orton
+              </span>
+            </div>
+
+            <div>
+              <span class="footer-contact-label">Books</span>
+
+              <a
+                class="footer-contact-link"
+                href="https://books.nvo987.us"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                books.nvo987.us
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="copyright">
+          © <span id="current-year">2026</span> NVO987.
+          All rights reserved.
+        </p>
+
+        <a
+          class="footer-domain"
+          href="https://books.nvo987.us"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://books.nvo987.us
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================== -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      /* -------------------------------------------------------
+         Current year
+         ------------------------------------------------------- */
+
+      const yearElement = document.getElementById("current-year");
+
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+
+      /* -------------------------------------------------------
+         Sticky header state
+         ------------------------------------------------------- */
+
+      const header = document.getElementById("site-header");
+
+      const updateHeader = () => {
+        if (!header) return;
+
+        if (window.scrollY > 18) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      };
+
+      updateHeader();
+
+      window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+      );
+
+      /* -------------------------------------------------------
+         Scroll reveal
+         ------------------------------------------------------- */
+
+      const revealElements =
+        document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+
+        const revealObserver =
+          new IntersectionObserver(
+            (entries, observer) => {
+
+              entries.forEach((entry) => {
+
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+
+              });
+
+            },
+            {
+              threshold: 0.12,
+              rootMargin: "0px 0px -40px 0px"
+            }
+          );
+
+        revealElements.forEach((element) => {
+          revealObserver.observe(element);
+        });
+
+      } else {
+
+        revealElements.forEach((element) => {
+          element.classList.add("visible");
+        });
+
+      }
+
+      /* -------------------------------------------------------
+         Active navigation state
+         ------------------------------------------------------- */
+
+      const sections = [
+        document.getElementById("library"),
+        document.getElementById("about"),
+        document.getElementById("store")
+      ].filter(Boolean);
+
+      const navLinks =
+        document.querySelectorAll(".nav-link");
+
+      if ("IntersectionObserver" in window) {
+
+        const sectionObserver =
+          new IntersectionObserver(
+            (entries) => {
+
+              entries.forEach((entry) => {
+
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                const currentId = entry.target.id;
+
+                navLinks.forEach((link) => {
+
+                  const linkTarget =
+                    link.getAttribute("href");
+
+                  link.classList.toggle(
+                    "active",
+                    linkTarget === `#${currentId}`
+                  );
+
+                });
+
+              });
+
+            },
+            {
+              rootMargin: "-35% 0px -55% 0px",
+              threshold: 0
+            }
+          );
+
+        sections.forEach((section) => {
+          sectionObserver.observe(section);
+        });
+
+      }
+
+      /* -------------------------------------------------------
+         Smooth anchor handling
+         ------------------------------------------------------- */
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+          const targetId =
+            link.getAttribute("href");
+
+          if (!targetId || targetId === "#") {
+            return;
+          }
+
+          const target =
+            document.querySelector(targetId);
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const headerHeight =
+            header ? header.offsetHeight : 0;
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight -
+            20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+          });
+
+        });
+
+      });
+
+      /* -------------------------------------------------------
+         Subtle pointer lighting for desktop hero
+         ------------------------------------------------------- */
+
+      const hero = document.querySelector(".hero");
+      const heroMesh = document.querySelector(".hero-mesh");
+
+      const supportsFinePointer =
+        window.matchMedia &&
+        window.matchMedia("(pointer: fine)").matches;
+
+      if (
+        hero &&
+        heroMesh &&
+        supportsFinePointer
+      ) {
+
+        let pointerFrame = null;
+
+        hero.addEventListener(
+          "pointermove",
+          (event) => {
+
+            if (pointerFrame) {
+              cancelAnimationFrame(pointerFrame);
+            }
+
+            pointerFrame = requestAnimationFrame(() => {
+
+              const rect =
+                hero.getBoundingClientRect();
+
+              const x =
+                ((event.clientX - rect.left) / rect.width) * 100;
+
+              const y =
+                ((event.clientY - rect.top) / rect.height) * 100;
+
+              heroMesh.style.background = `
+                radial-gradient(
+                  ellipse 35% 25% at ${x}% ${y}%,
+                  rgba(242, 214, 117, 0.11),
+                  transparent 72%
+                ),
+                radial-gradient(
+                  ellipse 28% 36% at 25% 64%,
+                  rgba(155, 107, 61, 0.095),
+                  transparent 72%
+                ),
+                radial-gradient(
+                  ellipse 38% 30% at 80% 76%,
+                  rgba(212, 175, 55, 0.065),
+                  transparent 70%
+                )
+              `;
+
+            });
+
+          },
+          { passive: true }
+        );
+
+      }
+
+    })();
+  </script>
+
+</body>
+</html> 
