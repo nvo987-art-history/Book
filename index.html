@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="NVO987 — Cultural, artistic, and research publishing curated by Nicholas Van-Orton.">
+  <meta name="author" content="Nicholas Van-Orton">
+  <meta name="robots" content="index, follow">
+
+  <title>NVO987 — Cultural & Artistic Research Publishing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       NVO987 — PREMIUM PUBLISHING HOUSE
+       Production-ready single-file stylesheet
+       ========================================================= */
+
+    :root {
+      --bg: #09090b;
+      --bg-soft: #0d0d10;
+      --surface: rgba(255, 255, 255, 0.045);
+      --surface-strong: rgba(255, 255, 255, 0.075);
+      --border: rgba(255, 255, 255, 0.10);
+      --border-bright: rgba(255, 255, 255, 0.16);
+      --text: #f5f5f7;
+      --text-soft: #b8b8c2;
+      --text-muted: #858591;
+      --accent-purple: #a78bfa;
+      --accent-blue: #60a5fa;
+      --accent-cyan: #67e8f9;
+      --accent-pink: #f0abfc;
+      --accent-green: #86efac;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 30px;
+      --container: 1240px;
+      --header-height: 78px;
+      --shadow-glow: 0 0 60px rgba(139, 92, 246, 0.12);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(
+          circle at 50% -20%,
+          rgba(99, 102, 241, 0.08),
+          transparent 38%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    ::selection {
+      background: rgba(167, 139, 250, 0.32);
+      color: #ffffff;
+    }
+
+    /* =========================================================
+       CUSTOM SCROLLBAR
+       ========================================================= */
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(167, 139, 250, 0.55) #09090b;
+    }
+
+    ::-webkit-scrollbar {
+      width: 9px;
+      height: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        rgba(167, 139, 250, 0.72),
+        rgba(96, 165, 250, 0.58)
+      );
+      border-radius: 999px;
+      border: 2px solid #09090b;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(
+        180deg,
+        rgba(192, 132, 252, 0.9),
+        rgba(96, 165, 250, 0.82)
+      );
+    }
+
+    /* =========================================================
+       GLOBAL LAYOUT
+       ========================================================= */
+
+    .page-shell {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    .container {
+      width: min(100% - 48px, var(--container));
+      max-width: var(--container);
+      margin-inline: auto;
+    }
+
+    .section {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: #d4d4dc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: var(--accent-purple);
+      box-shadow:
+        0 0 10px rgba(167, 139, 250, 0.9),
+        0 0 24px rgba(167, 139, 250, 0.55);
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      height: var(--header-height);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(9, 9, 11, 0.72);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(100% - 48px, var(--container));
+      height: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      gap: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 11px;
+      color: #ffffff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex: 0 0 10px;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        var(--accent-purple),
+        var(--accent-cyan)
+      );
+      box-shadow:
+        0 0 12px rgba(167, 139, 250, 0.9),
+        0 0 28px rgba(103, 232, 249, 0.35);
+    }
+
+    .brand-mark::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      content: "";
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .brand-suffix {
+      color: #858591;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(18px, 3vw, 36px);
+    }
+
+    .main-nav a {
+      position: relative;
+      padding: 8px 0;
+      color: #a9a9b3;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition:
+        color 220ms var(--ease),
+        transform 220ms var(--ease);
+    }
+
+    .main-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      left: 0;
+      height: 1px;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        var(--accent-purple),
+        var(--accent-cyan)
+      );
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 300ms var(--ease);
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .header-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #e7e7ec;
+      font-size: 0.76rem;
+      font-weight: 700;
+      transition:
+        border-color 220ms var(--ease),
+        background 220ms var(--ease),
+        box-shadow 220ms var(--ease),
+        transform 220ms var(--ease);
+    }
+
+    .header-contact:hover,
+    .header-contact:focus-visible {
+      border-color: rgba(167, 139, 250, 0.45);
+      background: rgba(167, 139, 250, 0.09);
+      box-shadow: 0 0 28px rgba(167, 139, 250, 0.12);
+      transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 900px;
+      max-width: 100%;
+      padding: calc(var(--header-height) + 90px) 0 120px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-grid {
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+      opacity: 0.32;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0, 0, 0, 0.75) 45%,
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0, 0, 0, 0.75) 45%,
+        transparent 100%
+      );
+    }
+
+    .hero-glow {
+      position: absolute;
+      z-index: -2;
+      width: min(72vw, 850px);
+      aspect-ratio: 1;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.5;
+      animation: orbFloat 14s ease-in-out infinite alternate;
+    }
+
+    .hero-glow.one {
+      top: -300px;
+      left: -180px;
+      background: rgba(124, 58, 237, 0.28);
+    }
+
+    .hero-glow.two {
+      top: 80px;
+      right: -320px;
+      background: rgba(37, 99, 235, 0.22);
+      animation-delay: -5s;
+      animation-duration: 18s;
+    }
+
+    .hero-glow.three {
+      bottom: -440px;
+      left: 32%;
+      background: rgba(6, 182, 212, 0.16);
+      animation-delay: -9s;
+      animation-duration: 20s;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      z-index: -4;
+      inset: 0;
+      opacity: 0.8;
+      background:
+        radial-gradient(
+          ellipse at 30% 15%,
+          rgba(139, 92, 246, 0.16),
+          transparent 40%
+        ),
+        radial-gradient(
+          ellipse at 72% 20%,
+          rgba(59, 130, 246, 0.13),
+          transparent 42%
+        ),
+        radial-gradient(
+          ellipse at 50% 68%,
+          rgba(34, 211, 238, 0.07),
+          transparent 38%
+        );
+    }
+
+    .hero-vignette {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(9, 9, 11, 0.08) 0%,
+          transparent 25%,
+          transparent 70%,
+          rgba(9, 9, 11, 0.95) 100%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1040px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 12px 40px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #bcbcc5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 12px rgba(134, 239, 172, 0.8);
+    }
+
+    .hero-title {
+      max-width: 1000px;
+      margin-inline: auto;
+      color: #ffffff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(3.3rem, 8vw, 7.6rem);
+      font-weight: 800;
+      letter-spacing: -0.075em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .gradient-text {
+      display: inline;
+      background:
+        linear-gradient(
+          105deg,
+          #ffffff 0%,
+          #e9d5ff 22%,
+          #c4b5fd 42%,
+          #93c5fd 65%,
+          #a5f3fc 82%,
+          #ffffff 100%
+        );
+      background-size: 220% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradientShift 9s ease-in-out infinite alternate;
+    }
+
+    .hero-subtitle {
+      max-width: 660px;
+      margin: 34px auto 0;
+      color: #a9a9b3;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 500;
+      line-height: 1.75;
+      text-wrap: balance;
+    }
+
+    .hero-subtitle strong {
+      color: #eeeeF2;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 42px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 23px;
+      border-radius: 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition:
+        transform 260ms var(--ease),
+        box-shadow 260ms var(--ease),
+        border-color 260ms var(--ease),
+        background 260ms var(--ease);
+    }
+
+    .button-primary {
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: #f5f5f7;
+      color: #09090b;
+      box-shadow:
+        0 10px 34px rgba(255, 255, 255, 0.10),
+        0 0 0 rgba(167, 139, 250, 0);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      transform: translateY(-3px);
+      box-shadow:
+        0 15px 42px rgba(255, 255, 255, 0.13),
+        0 0 40px rgba(167, 139, 250, 0.18);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.045);
+      color: #ededf0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .button-secondary:hover,
+    .button-secondary:focus-visible {
+      border-color: rgba(167, 139, 250, 0.38);
+      background: rgba(167, 139, 250, 0.08);
+      box-shadow: 0 14px 42px rgba(99, 102, 241, 0.14);
+      transform: translateY(-3px);
+    }
+
+    .button-arrow {
+      margin-left: 10px;
+      font-size: 1rem;
+      transition: transform 220ms var(--ease);
+    }
+
+    .button:hover .button-arrow,
+    .button:focus-visible .button-arrow {
+      transform: translateX(4px);
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px 30px;
+      margin-top: 58px;
+      color: #6f6f7a;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta-item::before {
+      width: 4px;
+      height: 4px;
+      content: "";
+      border-radius: 50%;
+      background: #575762;
+    }
+
+    .hero-meta-item:first-child::before {
+      display: none;
+    }
+
+    /* =========================================================
+       INTRODUCTION
+       ========================================================= */
+
+    .intro-section {
+      position: relative;
+      padding: 90px 0 130px;
+    }
+
+    .intro-section::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: min(100%, 900px);
+      height: 1px;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(167, 139, 250, 0.22),
+        rgba(96, 165, 250, 0.18),
+        transparent
+      );
+      transform: translateX(-50%);
+    }
+
+    .intro-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+      gap: clamp(40px, 8vw, 110px);
+      width: 100%;
+      max-width: 100%;
+      padding: clamp(32px, 5vw, 72px);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.025)
+        );
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 30px 100px rgba(0, 0, 0, 0.28),
+        var(--shadow-glow);
+      backdrop-filter: blur(24px) saturate(125%);
+      -webkit-backdrop-filter: blur(24px) saturate(125%);
+    }
+
+    .intro-card::before {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      content: "";
+      border-radius: 50%;
+      background: rgba(167, 139, 250, 0.08);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .intro-label {
+      color: #777783;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .intro-heading {
+      max-width: 380px;
+      margin-top: 15px;
+      color: #f4f4f6;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.055em;
+      line-height: 1.04;
+    }
+
+    .intro-heading span {
+      background: linear-gradient(
+        110deg,
+        #c4b5fd,
+        #93c5fd,
+        #a5f3fc
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .intro-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro-copy p {
+      color: #aaaab4;
+      font-size: clamp(1rem, 1.7vw, 1.1rem);
+      line-height: 1.9;
+    }
+
+    .intro-copy p + p {
+      margin-top: 22px;
+    }
+
+    .intro-signature {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 34px;
+      color: #e7e7eb;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .signature-line {
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-purple),
+        var(--accent-cyan)
+      );
+      box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+    }
+
+    /* =========================================================
+       VALUES STRIP
+       ========================================================= */
+
+    .values-section {
+      padding: 0 0 140px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .value-card {
+      position: relative;
+      min-width: 0;
+      padding: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.025);
+      transition:
+        border-color 300ms var(--ease),
+        background 300ms var(--ease),
+        transform 300ms var(--ease);
+    }
+
+    .value-card::before {
+      position: absolute;
+      top: 0;
+      left: 28px;
+      width: 40px;
+      height: 1px;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        var(--accent-purple),
+        transparent
+      );
+    }
+
+    .value-card:hover {
+      border-color: rgba(167, 139, 250, 0.18);
+      background: rgba(255, 255, 255, 0.045);
+      transform: translateY(-4px);
+    }
+
+    .value-number {
+      color: #666671;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    .value-title {
+      margin-top: 25px;
+      color: #eeeeF1;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .value-text {
+      margin-top: 11px;
+      color: #81818c;
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .site-footer {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      padding: 80px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.065);
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(124, 58, 237, 0.075),
+          transparent 28%
+        ),
+        #08080a;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+      gap: clamp(32px, 6vw, 90px);
+      padding-bottom: 70px;
+    }
+
+    .footer-brand {
+      min-width: 0;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 20px;
+    }
+
+    .footer-description {
+      max-width: 340px;
+      color: #797983;
+      font-size: 0.84rem;
+      line-height: 1.8;
+    }
+
+    .footer-heading {
+      margin-bottom: 19px;
+      color: #d9d9de;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .footer-links a {
+      display: inline-block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      color: #7f7f89;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      transition:
+        color 220ms var(--ease),
+        transform 220ms var(--ease);
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: #eeeeF2;
+      transform: translateX(3px);
+    }
+
+    .identity-link {
+      display: block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      color: #a7a7b2;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      transition: color 220ms var(--ease);
+    }
+
+    .identity-link:hover,
+    .identity-link:focus-visible {
+      color: var(--accent-cyan);
+    }
+
+    .identity-label {
+      margin-bottom: 8px;
+      color: #62626c;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.065);
+      color: #55555f;
+      font-size: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .footer-bottom-right {
+      color: #5f5f69;
+      text-align: right;
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
+    :focus-visible {
+      outline: 2px solid rgba(167, 139, 250, 0.85);
+      outline-offset: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* =========================================================
+       ANIMATIONS
+       ========================================================= */
+
+    @keyframes orbFloat {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(24px, -18px, 0) scale(1.06);
+      }
+
+      100% {
+        transform: translate3d(-16px, 20px, 0) scale(0.96);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 72px;
+      }
+
+      .header-inner,
+      .container {
+        width: min(100% - 36px, var(--container));
+      }
+
+      .main-nav {
+        gap: 20px;
+      }
+
+      .header-contact {
+        display: none;
+      }
+
+      .hero {
+        min-height: 820px;
+        padding-top: calc(var(--header-height) + 80px);
+      }
+
+      .intro-card {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .intro-heading {
+        max-width: 700px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-card {
+        padding: 27px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 640px) {
+      :root {
+        --header-height: 66px;
+      }
+
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .container,
+      .header-inner {
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+      }
+
+      .site-header {
+        height: var(--header-height);
+      }
+
+      .header-inner {
+        gap: 16px;
+      }
+
+      .brand {
+        font-size: 0.92rem;
+      }
+
+      .brand-suffix {
+        display: none;
+      }
+
+      .main-nav {
+        gap: 16px;
+        min-width: 0;
+      }
+
+      .main-nav a {
+        font-size: 0.72rem;
+      }
+
+      .main-nav a:nth-child(3) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 760px;
+        padding: calc(var(--header-height) + 70px) 0 80px;
+      }
+
+      .hero-grid {
+        background-size: 48px 48px;
+      }
+
+      .hero-glow {
+        width: 125vw;
+        filter: blur(60px);
+      }
+
+      .hero-glow.one {
+        top: -230px;
+        left: -65vw;
+      }
+
+      .hero-glow.two {
+        top: 150px;
+        right: -75vw;
+      }
+
+      .hero-glow.three {
+        bottom: -300px;
+        left: -10vw;
+      }
+
+      .hero-kicker {
+        max-width: 100%;
+        margin-bottom: 24px;
+        padding: 8px 11px;
+        font-size: 0.61rem;
+        letter-spacing: 0.10em;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: clamp(2.8rem, 14vw, 4.8rem);
+        letter-spacing: -0.07em;
+        line-height: 1;
+      }
+
+      .hero-subtitle {
+        margin-top: 25px;
+        font-size: 0.93rem;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 32px;
+      }
+
+      .button {
+        width: 100%;
+        min-height: 52px;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 40px;
+      }
+
+      .hero-meta-item::before {
+        display: none;
+      }
+
+      .intro-section {
+        padding: 65px 0 90px;
+      }
+
+      .intro-card {
+        gap: 30px;
+        padding: 28px 22px;
+        border-radius: 22px;
+      }
+
+      .intro-heading {
+        font-size: 2.25rem;
+      }
+
+      .intro-copy p {
+        font-size: 0.92rem;
+        line-height: 1.8;
+      }
+
+      .values-section {
+        padding-bottom: 90px;
+      }
+
+      .value-card {
+        padding: 25px 22px;
+      }
+
+      .site-footer {
+        padding-top: 60px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-bottom: 50px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-description {
+        max-width: 100%;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .footer-bottom-right {
+        text-align: left;
+      }
+    }
+
+    /* =========================================================
+       EXTRA SMALL DEVICES
+       ========================================================= */
+
+    @media (max-width: 380px) {
+      .container,
+      .header-inner {
+        width: calc(100% - 24px);
+        max-width: calc(100% - 24px);
+      }
+
+      .main-nav {
+        gap: 12px;
+      }
+
+      .main-nav a {
+        font-size: 0.67rem;
+      }
+
+      .hero-title {
+        font-size: 2.55rem;
+      }
+
+      .intro-card {
+        padding: 25px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+
+    <!-- =======================================================
+         HEADER
+         ======================================================= -->
+
+    <header class="site-header">
+      <div class="header-inner">
+
+        <a class="brand" href="#top" aria-label="NVO987 home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>NVO987</span>
+          <span class="brand-suffix">PUBLISHING</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#values">Focus</a>
+          <a href="#contact">Contact</a>
+          <a class="header-contact" href="mailto:nvo@nvo987.us">
+            Inquire
+          </a>
+        </nav>
+
+      </div>
+    </header>
+
+    <main id="top">
+
+      <!-- =====================================================
+           HERO
+           ===================================================== -->
+
+      <section class="hero section" aria-labelledby="hero-title">
+
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-mesh" aria-hidden="true"></div>
+
+        <div class="hero-glow one" aria-hidden="true"></div>
+        <div class="hero-glow two" aria-hidden="true"></div>
+        <div class="hero-glow three" aria-hidden="true"></div>
+
+        <div class="hero-vignette" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="hero-content">
+
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot" aria-hidden="true"></span>
+              Independent Cultural Publishing
+            </div>
+
+            <h1 class="hero-title" id="hero-title">
+              <span class="gradient-text">
+                NVO987: Publishing Cultural &amp; Artistic Research
+              </span>
+            </h1>
+
+            <p class="hero-subtitle">
+              A considered publishing house for books that explore
+              <strong>culture, art, ideas, archives, and research</strong>
+              with intellectual depth and lasting visual character.
+              Curated by <strong>Nicholas Van-Orton</strong>.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#about">
+                Discover NVO987
+                <span class="button-arrow" aria-hidden="true">↗</span>
+              </a>
+
+              <a class="button button-secondary" href="mailto:nvo@nvo987.us">
+                Contact the Publisher
+                <span class="button-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="hero-meta" aria-label="Publishing focus">
+              <span class="hero-meta-item">Culture</span>
+              <span class="hero-meta-item">Art</span>
+              <span class="hero-meta-item">Research</span>
+              <span class="hero-meta-item">Books</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           INTRODUCTION
+           ===================================================== -->
+
+      <section class="intro-section section" id="about" aria-labelledby="about-title">
+        <div class="container">
+
+          <div class="intro-card">
+
+            <div>
+              <div class="intro-label">The Publishing House</div>
+
+              <h2 class="intro-heading" id="about-title">
+                Books for
+                <span>curious minds.</span>
+              </h2>
+            </div>
+
+            <div class="intro-copy">
+              <p>
+                NVO987 is an independent publishing identity dedicated to
+                cultural, artistic, and research-led books. Its purpose is
+                simple: to give meaningful ideas the space, attention, and
+                physical form they deserve.
+              </p>
+
+              <p>
+                Curated by Nicholas Van-Orton, the catalogue is conceived
+                around subjects that reward close observation — from cultural
+                histories and artistic practices to archival discoveries,
+                critical inquiry, and contemporary research. Each publication
+                is approached as both an intellectual object and a lasting
+                cultural artifact.
+              </p>
+
+              <p>
+                NVO987 values clarity over noise, substance over volume, and
+                distinctive perspectives over convention. The result is a
+                publishing practice designed for readers, researchers,
+                collectors, and anyone drawn to ideas with depth and character.
+              </p>
+
+              <div class="intro-signature">
+                <span class="signature-line" aria-hidden="true"></span>
+                Nicholas Van-Orton
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =====================================================
+           VALUES / FOCUS
+           ===================================================== -->
+
+      <section class="values-section section" id="values" aria-labelledby="focus-title">
+        <div class="container">
+
+          <div class="eyebrow" id="focus-title">
+            Editorial Focus
+          </div>
+
+          <div class="values-grid">
+
+            <article class="value-card">
+              <div class="value-number">01</div>
+              <h3 class="value-title">Cultural Inquiry</h3>
+              <p class="value-text">
+                Publishing projects that examine the histories, identities,
+                movements, and ideas that shape culture.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-number">02</div>
+              <h3 class="value-title">Artistic Practice</h3>
+              <p class="value-text">
+                Books that document, contextualize, and celebrate distinctive
+                artistic voices and visual practices.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-number">03</div>
+              <h3 class="value-title">Research &amp; Archives</h3>
+              <p class="value-text">
+                Thoughtful research, archival material, and original
+                scholarship transformed into accessible publishing objects.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
+
+    <footer class="site-footer" id="contact">
+      <div class="container">
+
+        <div class="footer-grid">
+
+          <!-- Column 1 -->
+          <div class="footer-brand">
+            <a class="brand" href="#top" aria-label="NVO987 home">
+              <span class="brand-mark" aria-hidden="true"></span>
+              <span>NVO987</span>
+              <span class="brand-suffix">PUBLISHING</span>
+            </a>
+
+            <p class="footer-description">
+              An independent publishing identity focused on cultural,
+              artistic, and research books curated by Nicholas Van-Orton.
+            </p>
+          </div>
+
+          <!-- Column 2 -->
+          <div>
+            <div class="footer-heading">Explore</div>
+
+            <nav class="footer-links" aria-label="Footer navigation">
+              <a href="#top">Home</a>
+              <a href="#about">About NVO987</a>
+              <a href="#values">Editorial Focus</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </div>
+
+          <!-- Column 3 -->
+          <div>
+            <div class="footer-heading">Contact</div>
+
+            <nav class="footer-links" aria-label="Contact links">
+              <a href="mailto:nvo@nvo987.us">
+                nvo@nvo987.us
+              </a>
+
+              <a
+                href="https://books.nvo987.us"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                books.nvo987.us
+              </a>
+            </nav>
+          </div>
+
+          <!-- Column 4 -->
+          <div>
+            <div class="footer-heading">Identity</div>
+
+            <div class="identity-label">DID Web Identity</div>
+
+            <a
+              class="identity-link"
+              href="https://identity.nvo987.us"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="NVO987 decentralized web identity"
+            >
+              did:web:identity.nvo987.us
+            </a>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <div>
+            © 2026 NVO987. All rights reserved.
+          </div>
+
+          <div class="footer-bottom-right">
+            Nicholas Van-Orton · Cultural &amp; Artistic Research Publishing
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</body>
+  </html>
