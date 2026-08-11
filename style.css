@@ -1,0 +1,1067 @@
+/* ==========================================================================
+   NVO987
+   Independent Publishing
+   Editorial Design System
+   ========================================================================== */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap'
+);
+
+
+/* ==========================================================================
+   TOKENS
+   ========================================================================== */
+
+:root {
+    --paper: #f7f7f4;
+    --paper-deep: #f0efe9;
+    --white: #ffffff;
+
+    --ink: #111d30;
+    --ink-soft: #344154;
+    --muted: #6c7582;
+
+    --gold: #b8954d;
+    --gold-dark: #92743a;
+
+    --line: rgba(17, 29, 48, .14);
+    --line-light: rgba(17, 29, 48, .08);
+
+    --footer: #101920;
+    --footer-text: #e8e6df;
+    --footer-muted: #aab2ba;
+
+    --display:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    --sans:
+        "Plus Jakarta Sans",
+        Arial,
+        sans-serif;
+
+    --max-width: 1280px;
+
+    --ease:
+        cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--paper);
+}
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+
+    background: var(--paper);
+
+    color: var(--ink);
+
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.8;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+p,
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+::selection {
+    background: rgba(184, 149, 77, .25);
+}
+
+
+/* ==========================================================================
+   GLOBAL LAYOUT
+   ========================================================================== */
+
+.container {
+    width: min(
+        calc(100% - 80px),
+        var(--max-width)
+    );
+
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: clamp(100px, 11vw, 170px);
+}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    border-bottom: 1px solid var(--line-light);
+
+    background: rgba(247, 247, 244, .94);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.header-inner {
+    min-height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wordmark,
+.footer-wordmark {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .19em;
+}
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+
+    gap: clamp(28px, 4vw, 54px);
+}
+
+.main-navigation a {
+    position: relative;
+
+    color: var(--ink-soft);
+
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+
+    transition:
+        color 350ms var(--ease);
+}
+
+.main-navigation a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -9px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition:
+        transform 400ms var(--ease);
+}
+
+.main-navigation a:hover {
+    color: var(--ink);
+}
+
+.main-navigation a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding-block:
+        clamp(115px, 15vw, 210px)
+        clamp(115px, 14vw, 190px);
+
+    background:
+        linear-gradient(
+            180deg,
+            #fafaf8 0%,
+            var(--paper) 100%
+        );
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    right: -370px;
+    bottom: -430px;
+
+    border: 1px solid rgba(184, 149, 77, .11);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow,
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: var(--gold-dark);
+
+    font-size: .71rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.eyebrow::before,
+.section-label span {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 1px;
+
+    flex: 0 0 48px;
+
+    background: var(--gold);
+}
+
+.hero h1 {
+    max-width: 1050px;
+
+    margin:
+        28px 0 0;
+
+    color: var(--ink);
+
+    font-family: var(--display);
+    font-size: clamp(4rem, 8.2vw, 7.6rem);
+    font-weight: 500;
+    line-height: .87;
+    letter-spacing: -.045em;
+}
+
+.hero-description {
+    max-width: 790px;
+
+    margin-top: 52px;
+
+    color: var(--ink-soft);
+
+    font-size: clamp(1rem, 1.35vw, 1.17rem);
+    line-height: 1.9;
+}
+
+.hero-description p {
+    margin-bottom: 20px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-top: 40px;
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.button {
+    min-height: 55px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 28px;
+
+    border: 1px solid transparent;
+
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    transition:
+        transform 350ms var(--ease),
+        box-shadow 350ms var(--ease),
+        background 350ms var(--ease);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button-primary {
+    background: var(--gold);
+    color: #17202b;
+
+    box-shadow:
+        0 12px 30px rgba(184, 149, 77, .16);
+}
+
+.button-primary:hover {
+    background: #c4a461;
+
+    box-shadow:
+        0 18px 40px rgba(184, 149, 77, .22);
+}
+
+.button-secondary {
+    border-color: var(--line);
+    background: transparent;
+}
+
+.button-secondary:hover {
+    border-color: var(--gold);
+    background: var(--white);
+}
+
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+
+.about-section {
+    background: var(--paper-deep);
+}
+
+.about-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(320px, .85fr);
+
+    gap: clamp(70px, 11vw, 160px);
+
+    margin-top: 35px;
+}
+
+.about-layout h2,
+.research-layout h2 {
+    max-width: 850px;
+
+    margin: 0;
+
+    font-family: var(--display);
+    font-size: clamp(3rem, 5.5vw, 5.4rem);
+    font-weight: 500;
+    line-height: .94;
+    letter-spacing: -.035em;
+}
+
+.editorial-copy {
+    color: var(--ink-soft);
+
+    font-size: .98rem;
+    line-height: 1.9;
+}
+
+.editorial-copy p {
+    margin-bottom: 26px;
+}
+
+
+/* ==========================================================================
+   PUBLICATIONS
+   ========================================================================== */
+
+.publications-section {
+    background: var(--paper);
+}
+
+.section-header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(250px, 360px);
+
+    gap: 60px;
+
+    align-items: end;
+
+    margin-bottom: 75px;
+}
+
+.section-header h2 {
+    margin: 25px 0 0;
+
+    font-family: var(--display);
+    font-size: clamp(3.2rem, 5.4vw, 5.3rem);
+    font-weight: 500;
+    line-height: .93;
+    letter-spacing: -.035em;
+}
+
+.section-header > p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: .92rem;
+    line-height: 1.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   CATALOGUE
+
+   Fontos: nincs 3 egyforma marketing-kártya.
+
+   A publication egy katalogizált kiadvány.
+   Ez a struktúra 2, 20 vagy 100 könyvnél is működik.
+   -------------------------------------------------------------------------- */
+
+.publication-list {
+    border-top: 1px solid var(--ink);
+}
+
+.publication {
+    display: grid;
+
+    grid-template-columns:
+        190px
+        minmax(0, 1fr)
+        245px;
+
+    gap: 45px;
+
+    padding-block: 52px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.publication-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    color: var(--gold-dark);
+
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.publication-main h3 {
+    max-width: 850px;
+
+    margin: 0;
+
+    font-family: var(--display);
+    font-size: clamp(2.3rem, 3.8vw, 4rem);
+    font-weight: 500;
+    line-height: .97;
+    letter-spacing: -.025em;
+}
+
+.publication-author {
+    margin: 18px 0 27px;
+
+    color: var(--ink);
+
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+}
+
+.publication-description {
+    max-width: 700px;
+
+    margin: 0;
+
+    color: var(--ink-soft);
+
+    font-size: .93rem;
+    line-height: 1.85;
+}
+
+.publication-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 30px;
+}
+
+.publication-details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.detail-label {
+    color: var(--muted);
+
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: var(--ink);
+
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.publication-link {
+    position: relative;
+
+    color: var(--ink);
+
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.publication-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 350ms var(--ease);
+}
+
+.publication-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.publication-link span {
+    margin-left: 7px;
+
+    color: var(--gold-dark);
+
+    font-size: .9rem;
+}
+
+
+/* ==========================================================================
+   RESEARCH
+   ========================================================================== */
+
+.research-section {
+    background: var(--paper-deep);
+}
+
+.research-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(320px, .9fr);
+
+    gap: clamp(70px, 11vw, 150px);
+}
+
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+
+.contact-section {
+    padding-block: clamp(90px, 10vw, 140px);
+
+    background: var(--ink);
+    color: #fff;
+}
+
+.contact-inner {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, .7fr);
+
+    gap: 80px;
+
+    align-items: end;
+}
+
+.contact-section .section-label {
+    color: var(--gold-light, #d0b777);
+}
+
+.contact-section h2 {
+    max-width: 800px;
+
+    margin: 25px 0 0;
+
+    color: #fff;
+
+    font-family: var(--display);
+    font-size: clamp(3.3rem, 5.8vw, 5.7rem);
+    font-weight: 500;
+    line-height: .92;
+    letter-spacing: -.035em;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.contact-email {
+    color: #fff;
+
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+
+    transition: color 300ms ease;
+}
+
+.contact-email:hover {
+    color: #d0b777;
+}
+
+.identity-link {
+    color: #c3a96d;
+
+    font-size: .78rem;
+    letter-spacing: .03em;
+
+    word-break: break-word;
+}
+
+
+/* ==========================================================================
+   FOOTER
+
+   Nem tartalmaz könyvlistát.
+   Nem duplikálja a katalógust.
+   A katalógus a Publications oldalon / szekcióban él.
+   ========================================================================== */
+
+.site-footer {
+    background: var(--footer);
+    color: var(--footer-text);
+}
+
+.footer-main {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(150px, .6fr)
+        minmax(220px, .8fr);
+
+    gap: 70px;
+
+    padding-block: 70px 80px;
+}
+
+.footer-wordmark {
+    display: inline-block;
+
+    color: var(--footer-text);
+}
+
+.footer-brand p {
+    max-width: 410px;
+
+    margin: 24px 0 0;
+
+    color: var(--footer-muted);
+
+    font-size: .85rem;
+    line-height: 1.85;
+}
+
+.footer-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.footer-navigation a {
+    width: fit-content;
+
+    color: var(--footer-muted);
+
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    transition:
+        color 300ms ease,
+        transform 300ms var(--ease);
+}
+
+.footer-navigation a:hover {
+    color: #d0b777;
+    transform: translateX(3px);
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 10px;
+}
+
+.footer-heading {
+    margin-bottom: 7px;
+
+    color: #d0b777;
+
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.footer-contact p {
+    margin: 0;
+
+    color: var(--footer-text);
+
+    font-size: .88rem;
+}
+
+.footer-contact a {
+    color: var(--footer-muted);
+
+    font-size: .8rem;
+
+    transition: color 300ms ease;
+}
+
+.footer-contact a:hover {
+    color: #d0b777;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 72px;
+
+    border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    color: #7f8993;
+
+    font-size: .68rem;
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+
+    .container {
+        width: calc(100% - 56px);
+    }
+
+    .publication {
+        grid-template-columns:
+            145px
+            minmax(0, 1fr);
+    }
+
+    .publication-details {
+        grid-column: 2;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .footer-main {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: calc(100% - 36px);
+    }
+
+    .header-inner {
+        min-height: 72px;
+    }
+
+    .main-navigation {
+        gap: 18px;
+
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .main-navigation::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-navigation a {
+        flex: 0 0 auto;
+
+        font-size: .62rem;
+        letter-spacing: .1em;
+    }
+
+    .hero {
+        padding-block: 90px 100px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.5rem, 15vw, 5.2rem);
+    }
+
+    .hero-description {
+        margin-top: 38px;
+
+        font-size: .92rem;
+    }
+
+    .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .section {
+        padding-block: 85px;
+    }
+
+    .about-layout,
+    .research-layout,
+    .contact-inner {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .about-layout h2,
+    .research-layout h2 {
+        font-size: clamp(3rem, 13vw, 4.5rem);
+    }
+
+    .section-header {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+        margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+        font-size: clamp(3.2rem, 13vw, 4.7rem);
+    }
+
+    .publication {
+        display: block;
+
+        padding-block: 42px;
+    }
+
+    .publication-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: 8px 20px;
+
+        margin-bottom: 28px;
+    }
+
+    .publication-main h3 {
+        font-size: clamp(2.35rem, 10vw, 3.5rem);
+    }
+
+    .publication-description {
+        font-size: .9rem;
+    }
+
+    .publication-details {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        margin-top: 32px;
+    }
+
+    .contact-section h2 {
+        font-size: clamp(3.2rem, 13vw, 4.5rem);
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding-block: 60px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 10px;
+
+        padding-block: 23px;
+    }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 430px) {
+
+    .container {
+        width: calc(100% - 30px);
+    }
+
+    .wordmark {
+        font-size: .88rem;
+    }
+
+    .main-navigation {
+        gap: 15px;
+    }
+
+    .hero {
+        padding-top: 75px;
+    }
+
+    .eyebrow,
+    .section-label {
+        font-size: .62rem;
+        letter-spacing: .14em;
+    }
+
+    .eyebrow::before,
+    .section-label span {
+        width: 30px;
+        flex-basis: 30px;
+    }
+
+    .publication-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+  } 
