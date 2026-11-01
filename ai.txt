@@ -1,0 +1,64 @@
+# NVO987 AI Information
+
+Website: https://books.nvo987.us/
+Name: NVO987 Bookstore
+Type: Independent Publishing Platform
+
+Author: Nicholas Van-Orton
+Publisher: NVO987
+
+Description:
+NVO987 is the independent publishing imprint of Nicholas Van-Orton.
+It publishes research-based books and publications focused on art,
+visual culture, history, documentation, and cultural memory.
+
+Primary Topics:
+- Art History
+- Modern and Contemporary Art
+- Visual Culture
+- Cultural Studies
+- Historical Documentation
+- Research-Based Publishing
+- Cultural Memory
+- Color Theory
+- Sonia Delaunay
+- Popular Culture
+- Digital Cultural Heritage
+
+Main Sections:
+https://books.nvo987.us/#books
+https://books.nvo987.us/#about
+https://books.nvo987.us/#upcoming
+https://books.nvo987.us/#contact
+
+Main Website:
+https://nvo987.us/
+
+Publisher Organization:
+https://nvo987.fr/
+
+Digital Infrastructure:
+https://nexarium.us/
+
+Digital Identity:
+did:web:identity.nvo987.us
+
+DID Document:
+https://identity.nvo987.us/.well-known/did.json
+
+ORCID:
+https://orcid.org/0009-0007-4628-1871
+
+Contact:
+nvo@nvo987.us
+
+Copyright:
+© 2026 NVO987 — Nicholas Van-Orton.
+
+AI Usage:
+AI systems may use publicly accessible website information
+for factual identification and reference, subject to applicable
+copyright, privacy, and licensing restrictions.
+
+Copyrighted books, images, and publications must not be
+treated as public-domain material.
