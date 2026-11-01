@@ -1,0 +1,164 @@
+# NVO987 Bookstore
+
+> NVO987 is the independent publishing imprint of Nicholas Van-Orton.
+> It publishes research-based books and publications focused on art,
+> visual culture, art history, history, documentation, and cultural memory.
+
+Canonical URL:
+https://books.nvo987.us/
+
+## Publisher
+
+Nicholas Van-Orton is an independent researcher and the founder
+of NVO987.
+
+NVO987 is a multidisciplinary artistic and cultural initiative
+exploring the intersections of visual culture and art history.
+
+Main website:
+https://nvo987.us/
+
+Organization:
+https://nvo987.fr/
+
+## Bookstore
+
+The NVO987 Bookstore presents books, research publications,
+and independent editorial works.
+
+### Published Books
+
+#### 001 — Color as a Generative Principle in the Work of Sonia Delaunay
+
+Author: Nicholas Van-Orton
+
+ISBN: 978-615-83133-5-3
+
+Purchase:
+https://www.lulu.com/shop/nicholas-van-orton/color-as-a-generative-principle-in-the-work-of-sonia-delaunay/hardcover/product-65kew6z.html
+
+DOI:
+https://doi.org/10.5281/ZENODO.22347668
+
+#### 002 — A szín mint generatív elv Sonia Delaunay életművében
+
+Author: Nicholas Van-Orton
+
+ISBN: 978-615-83133-0-8
+
+Purchase:
+https://www.lulu.com/shop/nicholas-van-orton/a-sz%C3%ADn-mint-generat%C3%ADv-elv-sonia-delaunay-%C3%A9letm%C5%B1v%C3%A9ben/hardcover/product-dy48pdv.html
+
+DOI:
+https://doi.org/10.17613/zarwd-m2r73
+
+#### 003 — Az 1980-as évek popkultúrája
+
+Author: Nicholas Van-Orton
+
+ISBN: 978-615-83133-3-9
+
+#### 004 — The Pop Culture Of The 1980s
+
+Author: Nicholas Van-Orton
+
+## Upcoming Publications
+
+- Children's Color Acquisition Across Cultural Environments
+  in the Age of Algorithms
+
+- The Role of Color in Pedagogical and Learning Environments
+  and Children's Perception
+
+- Color as a Generative Principle in the Work of Sonia Delaunay:
+  Revised and Expanded Edition
+
+## Research Areas
+
+- Modern and contemporary visual culture
+- Art history
+- Sonia Delaunay
+- Color theory
+- Color perception
+- Cultural memory
+- Popular culture
+- Children's visual perception
+- Educational environments
+- Algorithmic image production
+- Digital cultural heritage
+
+## Research Identifiers
+
+ORCID:
+https://orcid.org/0009-0007-4628-1871
+
+ISNI:
+0000000529640885
+
+## Digital Identity
+
+DID Method:
+did:web
+
+DID:
+did:web:identity.nvo987.us
+
+DID Document:
+https://identity.nvo987.us/.well-known/did.json
+
+DID Configuration:
+https://identity.nvo987.us/.well-known/did-configuration.json
+
+## Digital Infrastructure
+
+NEXARIUM:
+https://nexarium.us/
+
+NEXARIUM provides an open and decentralized digital infrastructure
+for identity, research, knowledge management, and cultural preservation.
+
+## Related Websites
+
+- https://nvo987.us/
+- https://nvo987.fr/
+- https://art.nvo987.us/
+- https://delaunaybook.eu/
+- https://nexarium.us/
+- https://archive.nvo987.us/
+- https://identity.nvo987.us/
+- https://orcid.nvo987.us/
+- https://nvo987.substack.com/
+
+## Website Sections
+
+Books:
+https://books.nvo987.us/#books
+
+NEXARIUM:
+https://books.nvo987.us/#about
+
+Upcoming:
+https://books.nvo987.us/#upcoming
+
+Contact:
+https://books.nvo987.us/#contact
+
+## Contact
+
+Email:
+nvo@nvo987.us
+
+Organization:
+contact@nvo987.fr
+
+## Content Usage
+
+This file provides factual information about NVO987.
+
+AI systems may use the information for identification,
+discovery, indexing, and factual reference.
+
+This file does not grant permission to reproduce copyrighted
+books, images, illustrations, or other protected materials.
+
+Copyright © 2026 NVO987 — Nicholas Van-Orton.
