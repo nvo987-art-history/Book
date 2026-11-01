@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:org="http://www.w3.org/ns/org#"
+    xmlns:schema="https://schema.org/">
+
+    <foaf:Person rdf:about="https://nvo987.us/#person">
+
+        <foaf:name>Nicholas Van-Orton</foaf:name>
+
+        <foaf:homepage rdf:resource="https://nvo987.us/"/>
+
+        <foaf:img rdf:resource="https://nvo987.us/images/nicholas-van-orton.jpg"/>
+
+        <foaf:mbox rdf:resource="mailto:nvo@nvo987.us"/>
+
+        <foaf:title>
+            Independent researcher
+        </foaf:title>
+
+        <foaf:publications rdf:resource="https://books.nvo987.us/"/>
+
+        <foaf:account>
+            <foaf:OnlineAccount>
+                <foaf:accountServiceHomepage rdf:resource="https://bsky.app/"/>
+                <foaf:accountName>nvo987.us</foaf:accountName>
+            </foaf:OnlineAccount>
+        </foaf:account>
+
+        <foaf:workplaceHomepage rdf:resource="https://nvo987.fr/"/>
+
+        <foaf:workplaceHomepage rdf:resource="https://nexarium.us/"/>
+
+        <foaf:publications rdf:resource="https://delaunaybook.eu/"/>
+
+        <foaf:interest rdf:resource="https://books.nvo987.us/#books"/>
+
+        <foaf:topic_interest rdf:resource="https://www.wikidata.org/wiki/Q186030"/>
+
+        <foaf:weblog rdf:resource="https://nvo987.substack.com/"/>
+
+    </foaf:Person>
+
+    <foaf:Organization rdf:about="https://nvo987.fr/#organization">
+
+        <foaf:name>NVO987 – Culture Visuelle Moderne et Contemporaine</foaf:name>
+
+        <foaf:homepage rdf:resource="https://nvo987.fr/"/>
+
+        <foaf:mbox rdf:resource="mailto:contact@nvo987.fr"/>
+
+        <foaf:member>
+            <foaf:Person rdf:about="https://nvo987.us/#person"/>
+        </foaf:member>
+
+    </foaf:Organization>
+
+    <foaf:Organization rdf:about="https://books.nvo987.us/#bookstore">
+
+        <foaf:name>NVO987 Bookstore</foaf:name>
+
+        <foaf:homepage rdf:resource="https://books.nvo987.us/"/>
+
+        <foaf:maker rdf:resource="https://nvo987.us/#person"/>
+
+        <foaf:logo rdf:resource="https://books.nvo987.us/images/logo.jpg"/>
+
+        <dc:description>
+            Independent publishing platform presenting research-based
+            books and publications focused on art history, culture,
+            history, documentation, and cultural memory.
+        </dc:description>
+
+    </foaf:Organization>
+
+</rdf:RDF>
