@@ -1,0 +1,79 @@
+/* TEAM */
+
+Website:
+NVO987 Bookstore
+
+Author:
+Nicholas Van-Orton
+
+Role:
+Independent researcher
+Founder of NVO987
+Independent publisher
+
+Publishing:
+NVO987
+
+Organization:
+NVO987 – Culture Visuelle Moderne et Contemporaine
+
+Website:
+https://nvo987.fr/
+
+Digital Infrastructure:
+NEXARIUM
+https://nexarium.us/
+
+/* CONTACT */
+
+General:
+nvo@nvo987.us
+
+Organization:
+contact@nvo987.fr
+
+/* SITE */
+
+Website:
+https://books.nvo987.us/
+
+Language:
+English
+
+Primary Topics:
+Art History
+Visual Culture
+Cultural Research
+Independent Publishing
+Historical Documentation
+Cultural Memory
+
+/* TECHNOLOGY */
+
+HTML5
+CSS3
+JSON-LD
+Schema.org
+DID Web
+XML
+RSS
+Atom
+FOAF
+
+/* IDENTITY */
+
+DID:
+did:web:identity.nvo987.us
+
+ORCID:
+0009-0007-4628-1871
+
+ISNI:
+0000000529640885
+
+/* COPYRIGHT */
+
+Copyright © 2026
+NVO987 — Nicholas Van-Orton
+
+All rights reserved.
