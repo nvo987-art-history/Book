@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <id>https://books.nvo987.us/</id>
+
+    <title>NVO987 Bookstore</title>
+
+    <subtitle>
+        Independent publishing by Nicholas Van-Orton.
+        Research-based books, art history, visual culture,
+        documentation, and cultural memory.
+    </subtitle>
+
+    <link href="https://books.nvo987.us/" rel="alternate" type="text/html"/>
+
+    <link href="https://books.nvo987.us/atom.xml" rel="self" type="application/atom+xml"/>
+
+    <updated>2026-11-01T00:00:00Z</updated>
+
+    <author>
+        <name>Nicholas Van-Orton</name>
+        <uri>https://nvo987.us/</uri>
+        <email>nvo@nvo987.us</email>
+    </author>
+
+    <id>urn:nvo987:bookstore</id>
+
+    <category term="Art History"/>
+    <category term="Visual Culture"/>
+    <category term="Independent Publishing"/>
+    <category term="Cultural Research"/>
+
+    <rights>Copyright © 2026 NVO987 — Nicholas Van-Orton. All rights reserved.</rights>
+
+    <entry>
+        <id>https://doi.org/10.17613/zarwd-m2r73</id>
+
+        <title>A szín mint generatív elv Sonia Delaunay életművében</title>
+
+        <author>
+            <name>Nicholas Van-Orton</name>
+        </author>
+
+        <link href="https://doi.org/10.17613/zarwd-m2r73" rel="alternate"/>
+
+        <summary>
+            Research-based publication examining color as a generative
+            principle in the work of Sonia Delaunay.
+        </summary>
+
+        <category term="Art History"/>
+        <category term="Sonia Delaunay"/>
+
+    </entry>
+
+    <entry>
+        <id>https://doi.org/10.5281/ZENODO.22204421</id>
+
+        <title>Children's Color Acquisition Across Cultural Environments in the Age of Algorithms</title>
+
+        <author>
+            <name>Nicholas Van-Orton</name>
+        </author>
+
+        <link href="https://doi.org/10.5281/ZENODO.22204421" rel="alternate"/>
+
+        <summary>
+            Research concerning children's color acquisition,
+            cultural environments, visual perception, and algorithms.
+        </summary>
+
+        <category term="Color Perception"/>
+        <category term="Visual Culture"/>
+
+    </entry>
+
+    <entry>
+        <id>https://doi.org/10.5281/ZENODO.22029825</id>
+
+        <title>The Role of Color in Pedagogical and Learning Environments and Children's Perception</title>
+
+        <author>
+            <name>Nicholas Van-Orton</name>
+        </author>
+
+        <link href="https://doi.org/10.5281/ZENODO.22029825" rel="alternate"/>
+
+        <summary>
+            Research on color, educational environments,
+            visual perception, and children's learning.
+        </summary>
+
+        <category term="Education"/>
+        <category term="Color Perception"/>
+
+    </entry>
+
+</feed>
