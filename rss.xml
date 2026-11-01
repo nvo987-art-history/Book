@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+    <channel>
+
+        <title>NVO987 Bookstore</title>
+
+        <link>https://books.nvo987.us/</link>
+
+        <description>
+            Independent publishing by Nicholas Van-Orton.
+            Books and research publications focused on art history,
+            visual culture, documentation, and cultural memory.
+        </description>
+
+        <language>en-us</language>
+
+        <copyright>Copyright © 2026 NVO987 — Nicholas Van-Orton</copyright>
+
+        <managingEditor>nvo@nvo987.us (Nicholas Van-Orton)</managingEditor>
+
+        <webMaster>nvo@nvo987.us</webMaster>
+
+        <atom:link href="https://books.nvo987.us/rss.xml"
+                   rel="self"
+                   type="application/rss+xml"/>
+
+        <image>
+            <url>https://books.nvo987.us/images/logo.jpg</url>
+            <title>NVO987 Bookstore</title>
+            <link>https://books.nvo987.us/</link>
+        </image>
+
+        <item>
+
+            <title>Color as a Generative Principle in the Work of Sonia Delaunay</title>
+
+            <link>https://doi.org/10.5281/ZENODO.22347668</link>
+
+            <guid isPermaLink="true">
+                https://doi.org/10.5281/ZENODO.22347668
+            </guid>
+
+            <dc:creator>Nicholas Van-Orton</dc:creator>
+
+            <description>
+                Research-based publication examining color as a
+                generative principle in the work of Sonia Delaunay.
+            </description>
+
+            <category>Art History</category>
+
+        </item>
+
+        <item>
+
+            <title>A szín mint generatív elv Sonia Delaunay életművében</title>
+
+            <link>https://doi.org/10.17613/zarwd-m2r73</link>
+
+            <guid isPermaLink="true">
+                https://doi.org/10.17613/zarwd-m2r73
+            </guid>
+
+            <dc:creator>Nicholas Van-Orton</dc:creator>
+
+            <description>
+                Hungarian-language publication about color as a
+                generative principle in Sonia Delaunay's work.
+            </description>
+
+            <category>Art History</category>
+
+        </item>
+
+        <item>
+
+            <title>Children's Color Acquisition Across Cultural Environments in the Age of Algorithms</title>
+
+            <link>https://doi.org/10.5281/ZENODO.22204421</link>
+
+            <guid isPermaLink="true">
+                https://doi.org/10.5281/ZENODO.22204421
+            </guid>
+
+            <dc:creator>Nicholas Van-Orton</dc:creator>
+
+            <description>
+                Research concerning color acquisition, visual perception,
+                cultural environments, and algorithms.
+            </description>
+
+            <category>Research</category>
+
+        </item>
+
+    </channel>
+
+</rss>
