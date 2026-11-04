@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://books.nvo987.us/sitemap.xml
